@@ -1,6 +1,7 @@
 <template>
   <div class="notebook">
     <component v-for="module in sortedModules"
+               :key="module.key"
                :is="wrapper"
                :content="module.module">
     </component>
@@ -24,11 +25,11 @@
           },
           {
             module: TextModule,
-            position: 2
+            position: 1
           },
           {
             module: VideoModule,
-            position: 1
+            position: 2
           }
         ]
       }
