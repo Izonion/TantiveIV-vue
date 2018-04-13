@@ -1,12 +1,12 @@
 <template>
   <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" v-text="content.text"></textarea>
-      <button @click="editing = !editing">Save</button>
+      <textarea class="text-content" v-model="editedContent.text"></textarea>
+      <button @click="save">Save</button>
     </div>
     <div v-else>
       <p class="text-content" v-text="content.text"></p>
-      <button @click="editing = !editing">Edit</button>
+      <button @click="edit">Edit</button>
     </div>
   </div>
 </template>
@@ -22,7 +22,21 @@
     },
     data() {
       return {
-        editing: false
+        editing: false,
+        editedContent: {}
+      }
+    },
+    methods: {
+      edit() {
+        this.editing = true;
+        this.editedContent = this.content;
+      },
+      save() {
+        this.editing = false;
+        this.contentUpdated(this.editedContent);
+      },
+      contentUpdated(newContent) {
+        this.$emit('contentUpdated', newContent);
       }
     }
   }

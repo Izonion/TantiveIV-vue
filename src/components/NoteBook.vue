@@ -1,11 +1,12 @@
 <template>
   <div class="notebook">
-    <div v-for="module in modules">
+    <div class="card" v-for="module in modules">
       <component :key="module.key"
                  :is="module.module"
-                 :content="module.content">
+                 :content="module.content"
+                 @contentUpdated="updateContent(module, $event)">
       </component>
-      <button @click="removeModule(module)">-</button>
+      <button class="btn btn-danger" @click="removeModule(module)">-</button>
     </div>
   </div>
 </template>
@@ -46,6 +47,10 @@
             return;
           }
         }
+      },
+      updateContent(module, newContent) {
+        console.log("update");
+        module.content = newContent;
       }
     }
   }
