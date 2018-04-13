@@ -1,5 +1,5 @@
 <template>
-  <div class="module-wrapper">
+  <div class="card module-wrapper">
     <component :is="content">
     </component>
   </div>
