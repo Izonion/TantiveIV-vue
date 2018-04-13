@@ -1,5 +1,5 @@
 <template>
-  <div class="module">
+  <div class="module card-body">
     <div v-if="editing">
       <textarea class="text-content" v-model.sync="editedContent.text"></textarea>
       <button @click="save">Save</button>

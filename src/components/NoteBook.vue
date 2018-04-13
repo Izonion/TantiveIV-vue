@@ -1,12 +1,19 @@
 <template>
-  <div class="notebook">
-    <div class="card" v-for="module in modules">
-      <component :key="module.key"
-                 :is="module.module"
-                 :content="module.content"
-                 @contentUpdated="updateContent(module, $event)">
-      </component>
-      <button class="btn btn-danger" @click="removeModule(module)">-</button>
+  <div class="notebook container">
+    <div class="row row-offset" v-for="module in modules">
+      <div class="col-md-10 offset-md-1">
+        <div class="card">
+          <component :key="module.key"
+                     :is="module.module"
+                     :content="module.content"
+                     @contentUpdated="updateContent(module, $event)">
+          </component>
+          <div class="card-footer btn-toolbar justify-content-between">
+            <button class="btn btn-sm btn-secondary card-text" @click="">Edit</button>
+            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +39,8 @@
             module: VideoModule,
             content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
           }
-        ]
+        ],
+        editing: true
       }
     },
     components: {
@@ -54,3 +62,9 @@
     }
   }
 </script>
+
+<style scoped>
+.row-offset {
+  margin-top: 20px;
+}
+</style>
