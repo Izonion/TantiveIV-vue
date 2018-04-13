@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @signInEvent="switchToSignIn"/>
     <component :is="bodyView"
                @click="switchToSignIn"></component>
   </div>
@@ -20,7 +20,8 @@ export default {
   },
   data() {
     return {
-      bodyView: NoteBook
+      bodyView: NoteBook,
+      webSocket: null
     }
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
   },
   created() {
     try {
-      var webSocket = new WebSocket("ws://study.test:8001/ws");
+      this.webSocket = new WebSocket("ws://study.test:8001/ws");
       webSocket.onopen = (event) => {console.log("Web Socket Open")};
     } catch (err) {
       console.log("Could not connect to server.");
