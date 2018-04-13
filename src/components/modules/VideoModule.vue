@@ -1,7 +1,7 @@
 <template>
   <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.embedUrl"></textarea>
+      <textarea class="text-content" v-model.sync="editedContent.userUrl"></textarea>
     </div>
     <div class="aspect-ratio" v-else>
       <iframe width="100%" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -28,6 +28,13 @@
       }
     },
     methods: {
+      save() {
+        this.editedContent.embedUrl = this.embedUrl;
+        this.contentUpdated(this.editedContent);
+      },
+      edit() {
+        this.editedContent = this.content;
+      },
       contentUpdated(newContent) {
         this.$emit('contentUpdated', newContent);
       }
@@ -35,9 +42,19 @@
     watch: {
       editing(val) {
         if (val) {
-          this.editedContent = this.content;
+          this.edit();
         } else {
-          this.contentUpdated(this.editedContent);
+          this.save();
+        }
+      }
+    },
+    computed: {
+      embedUrl() {
+        var userUrl = this.editedContent.userUrl;
+        if (userUrl.indexOf("youtube.com") == -1) {
+          return;
+        } else {
+          return userUrl;
         }
       }
     }

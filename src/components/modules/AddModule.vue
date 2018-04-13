@@ -24,11 +24,9 @@
 
   export default {
     name: "AddModule",
-    props: {
-      expanded: false
-    },
     data() {
       return {
+        expanded: false,
         moduleTypes: {
           "Text": TextModule,
           "Video": VideoModule,
