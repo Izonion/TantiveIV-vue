@@ -27,8 +27,8 @@ export default {
   methods: {
     switchToSignIn() {
       this.bodyView = SignIn;
-      this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
-      this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
+      //this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
+      //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
     }
   },
   created() {
