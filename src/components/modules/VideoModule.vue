@@ -5,18 +5,18 @@
   </div>
   -->
 
-  
+
   <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="embedUrl"></textarea>
-      <button @click="editing = !editing">Save</button>
+      <textarea class="text-content" v-model.sync="editedContent.embedUrl"></textarea>
+      <button @click="save">Save</button>
     </div>
     <div v-else>
-      <iframe width="560" height="315" :src="embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <button @click="editing = !editing">Edit</button>
+      <iframe width="560" height="315" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <button @click="edit">Edit</button>
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -30,8 +30,21 @@
     },
     data() {
       return {
-        embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c",
+        editedContent: {},
         editing: false
+      }
+    },
+    methods: {
+      edit() {
+        this.editing = true;
+        this.editedContent = this.content;
+      },
+      save() {
+        this.editing = false;
+        this.contentUpdated(this.editedContent);
+      },
+      contentUpdated(newContent) {
+        this.$emit('contentUpdated', newContent);
       }
     }
   }

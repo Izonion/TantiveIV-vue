@@ -30,7 +30,7 @@
           },
           {
             module: VideoModule,
-            content: {}
+            content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
           }
         ]
       }
@@ -49,7 +49,6 @@
         }
       },
       updateContent(module, newContent) {
-        console.log("update");
         module.content = newContent;
       }
     }

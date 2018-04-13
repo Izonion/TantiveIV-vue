@@ -1,7 +1,7 @@
 <template>
   <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" v-model="editedContent.text"></textarea>
+      <textarea class="text-content" v-model.sync="editedContent.text"></textarea>
       <button @click="save">Save</button>
     </div>
     <div v-else>
