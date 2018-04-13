@@ -1,25 +1,28 @@
 <template>
   <div class="notebook container">
-    <div class="row row-offset" v-for="module in modules">
-      <div class="col-md-10 offset-md-1">
+    <div class="row row-offset justify-content-center" v-for="module in modules">
+      <div class="col-md-10">
         <div class="card">
-          <component :key="module.key"
-                     :is="module.module"
+          <component :is="module.module"
                      :content="module.content"
                      :editing="module.editing"
-                     @contentUpdated="updateContent(module, $event)">
-          </component>
+                     @contentUpdated="updateContent(module, $event)"></component>
           <div class="card-footer btn-toolbar justify-content-between">
-            <button class="btn btn-sm btn-success card-text"
-                    @click="module.editing = false"
-                    v-if="module.editing">Save</button>
-            <button class="btn btn-sm btn-secondary card-text"
-                    @click="module.editing = true"
-                    v-else>Edit</button>
             <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
+            <span v-if="module.editing !== undefined">
+              <button class="btn btn-lg btn-success card-text"
+                      @click="module.editing = false"
+                      v-if="module.editing">Save</button>
+              <button class="btn btn-lg btn-secondary card-text"
+                      @click="module.editing = true"
+                      v-else>Edit</button>
+            </span>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row row-offset justify-content-center">
+      <AddModule @addModule="addModule" />
     </div>
   </div>
 </template>
@@ -29,7 +32,7 @@
   import VideoModule from './modules/VideoModule.vue'
   import ImageModule from './modules/ImageModule.vue'
   import QuizletModule from './modules/QuizletModule.vue'
-
+  import AddModule from './modules/AddModule.vue'
 
   export default {
     name: "NoteBook",
@@ -65,6 +68,9 @@
         editing: true
       }
     },
+    components: {
+      AddModule
+    },
     methods: {
       removeModule(module) {
         for (var i = 0; i < this.modules.length; i++) {
@@ -76,6 +82,13 @@
       },
       updateContent(module, newContent) {
         module.content = newContent;
+      },
+      addModule(newModule) {
+        this.modules.push({
+          module: newModule,
+          editing: false,
+          content: {}
+        });
       }
     }
   }

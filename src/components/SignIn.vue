@@ -1,7 +1,6 @@
 <template>
-  <header>
-    STUDY
-  </header>
+  <div>
+  </div>
 </template>
 
 <script>
@@ -9,7 +8,7 @@
     name: "SignIn",
     data() {
       return {
-        
+
       }
     }
   }
