@@ -27,6 +27,13 @@ export default {
     switchToSignIn() {
       this.bodyView = SignIn;
     }
+  },
+  created() {
+    try {
+      var webSocket = new WebSocket("ws://study.test/ws");
+    } catch {
+      console.log("Could not connect to server.");
+    }
   }
 }
 </script>
