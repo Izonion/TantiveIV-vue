@@ -1,13 +1,12 @@
 <template>
-  <div class="module">
+  <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.imageUrl"></textarea>
+      <textarea class="editbox text-content" v-model.sync="editedContent.imageUrl"></textarea>
     </div>
     <div v-else>
       <img :src="content.imageUrl" width="560"></img>
     </div>
   </div>
-
 </template>
 
 <script>

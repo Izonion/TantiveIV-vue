@@ -1,7 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
+      <textarea class="editbox ext-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
     </div>
     <div v-else>
       <iframe :src="content.quizUrl" height="500" width="100%" style="border:0"></iframe>

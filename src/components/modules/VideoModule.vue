@@ -1,7 +1,7 @@
 <template>
-  <div class="module">
+  <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.userUrl"></textarea>
+      <textarea class="editbox text-content" v-model.sync="editedContent.userUrl"></textarea>
     </div>
     <div class="aspect-ratio" v-else>
       <iframe width="100%" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

@@ -99,3 +99,10 @@
   margin-top: 20px;
 }
 </style>
+
+<style>
+  .editbox {
+    width: 100%;
+    resize: vertical;
+  }
+</style>
