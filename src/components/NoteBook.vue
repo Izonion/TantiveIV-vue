@@ -1,8 +1,8 @@
 <template>
   <div class="notebook">
-    <component v-for="(m, key) in modules"
+    <component v-for="module in sortedModules"
                :is="wrapper"
-               :content="m">
+               :content="module.module">
     </component>
   </div>
 </template>
@@ -17,11 +17,20 @@
     data() {
       return {
         wrapper: ModuleWrapper,
-        modules: {
-          0: TextModule,
-          1: TextModule,
-          2: VideoModule
-        }
+        modules: [
+          {
+            module: TextModule,
+            position: 0
+          },
+          {
+            module: TextModule,
+            position: 2
+          },
+          {
+            module: VideoModule,
+            position: 1
+          }
+        ]
       }
     },
     components: {
@@ -29,7 +38,14 @@
     },
     computed: {
       sortedModules() {
-
+        function compare(l, r) {
+          if (l.position < r.position) {
+            return -1;
+          } else if (l.position > r.position) {
+            return 1;
+          }
+        }
+        return this.modules.sort(compare);
       }
     }
   }
