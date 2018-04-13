@@ -1,20 +1,20 @@
 <template>
-  <div class="module card-body">
+  <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
+      <textarea class="text-content" v-model.sync="editedContent.imageUrl"></textarea>
       <button @click="save">Save</button>
     </div>
     <div v-else>
-
-      <p class="text-content" v-text="content.text"></p>
+      <img :src="content.imageUrl" width="560"></img>
       <button @click="edit">Edit</button>
     </div>
   </div>
+
 </template>
 
 <script>
   export default {
-    name: "TextModule",
+    name: "VideoModule",
     props: {
       content: {
         type: Object,
@@ -23,8 +23,8 @@
     },
     data() {
       return {
-        editing: false,
-        editedContent: {}
+        editedContent: {},
+        editing: false
       }
     },
     methods: {
@@ -42,12 +42,3 @@
     }
   }
 </script>
-
-<style scoped>
-  p {
-    white-space: pre-wrap;
-  }
-  .module {
-    text-align: left;
-  }
-</style>
