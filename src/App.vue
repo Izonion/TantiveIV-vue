@@ -28,7 +28,6 @@ export default {
   methods: {
     switchToSignIn() {
       this.bodyView = SignIn;
-      //this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
       //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
     },
     switchToHome() {
@@ -38,7 +37,10 @@ export default {
   created() {
     try {
       this.webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {console.log("Web Socket Open")};
+      webSocket.onopen = (event) => {
+        console.log("Web Socket Open");
+        //this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
+      };
     } catch (err) {
       console.log("Could not connect to server.");
       console.log(err);
