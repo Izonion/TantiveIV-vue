@@ -57,4 +57,12 @@
   .navbar-light{
     background-color: #DCB13C;
   }
+
+  .navbar-brand{
+    color: #404040;
+  }
+
+  .navbar-brand:hover {
+    color: #404040;
+  }
 </style>

@@ -8,7 +8,7 @@
                      :editing="module.editing"
                      @contentUpdated="updateContent(module, $event)"></component>
           <div class="card-footer btn-toolbar justify-content-between">
-            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
+            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
             <span v-if="module.editing !== undefined">
               <button class="btn btn-lg btn-success card-text"
                       @click="module.editing = false"

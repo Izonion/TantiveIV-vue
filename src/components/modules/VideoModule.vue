@@ -53,6 +53,10 @@
         var userUrl = this.editedContent.userUrl;
         if (userUrl.indexOf("youtube.com") == -1) {
           return;
+        } else if (userUrl.indexOf("watch?v=") > -1){
+          var output = "https://youtube.com/embed/" + userUrl.substring(userUrl.indexOf("v=") + 2, userUrl.indexOf("v=") + 13);
+          console.log(output);
+          return output;
         } else {
           return userUrl;
         }
