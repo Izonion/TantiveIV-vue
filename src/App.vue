@@ -30,9 +30,11 @@ export default {
   },
   created() {
     try {
-      var webSocket = new WebSocket("ws://study.test:8004/ws");
-    } catch {
+      var webSocket = new WebSocket("ws://study.test:8001/ws");
+      webSocket.onopen = (event) => {console.log("Web Socket Open")};
+    } catch (err) {
       console.log("Could not connect to server.");
+      console.log(err);
     }
   }
 }
