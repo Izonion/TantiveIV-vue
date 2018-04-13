@@ -51,6 +51,7 @@
           },
           {
             module: ImageModule,
+            editing: false,
             content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
           }
         ],
