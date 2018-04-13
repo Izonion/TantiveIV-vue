@@ -1,11 +1,11 @@
 <template>
   <div class="module">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.embedUrl"></textarea>
+      <textarea class="text-content" v-model.sync="editedContent.imageUrl"></textarea>
       <button @click="save">Save</button>
     </div>
     <div v-else>
-      <iframe width="560" height="315" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <img :src="content.imageUrl" width="560"></img>
       <button @click="edit">Edit</button>
     </div>
   </div>

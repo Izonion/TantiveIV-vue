@@ -27,6 +27,7 @@
 <script>
   import TextModule from './modules/TextModule.vue'
   import VideoModule from './modules/VideoModule.vue'
+  import ImageModule from './modules/ImageModule.vue'
 
   export default {
     name: "NoteBook",
@@ -47,6 +48,10 @@
             module: VideoModule,
             editing: false,
             content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
+          },
+          {
+            module: ImageModule,
+            content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
           }
         ],
         editing: true

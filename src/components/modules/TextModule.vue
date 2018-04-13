@@ -1,9 +1,10 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.text"></textarea>
+      <textarea class="text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
     </div>
     <div v-else>
+
       <p class="text-content" v-text="content.text"></p>
     </div>
   </div>
@@ -42,3 +43,12 @@
     }
   }
 </script>
+
+<style scoped>
+  p {
+    white-space: pre-wrap;
+  }
+  .module {
+    text-align: left;
+  }
+</style>
