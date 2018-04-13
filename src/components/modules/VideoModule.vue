@@ -9,7 +9,7 @@
     name: "VideoModule",
     data() {
       return {
-    	   embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"
+        embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"
       }
     }
   }
