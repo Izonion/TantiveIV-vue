@@ -30,6 +30,8 @@
     },
     data() {
       return {
+        embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c",
+        editing: false
       }
     }
   }
