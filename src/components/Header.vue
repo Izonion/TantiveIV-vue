@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">-->
+  <nav class="navbar navbar-expand-lg navbar-light rounded">
     <a class="navbar-brand" href="#">Self Study <i class="fas fa-book"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,12 +37,6 @@
       </div>
     </div>
   </nav>
-
-  <!--
-  <div>
-    
-  </div>
-  -->
 </template>
 
 
@@ -55,3 +50,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .navbar-light{
+    background-color: #DCB13C;
+  }
+</style>
