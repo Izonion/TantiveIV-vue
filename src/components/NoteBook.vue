@@ -28,6 +28,8 @@
   import TextModule from './modules/TextModule.vue'
   import VideoModule from './modules/VideoModule.vue'
   import ImageModule from './modules/ImageModule.vue'
+  import QuizletModule from './modules/QuizletModule.vue'
+
 
   export default {
     name: "NoteBook",
@@ -53,14 +55,15 @@
             module: ImageModule,
             editing: false,
             content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
+          },
+          {
+            module: QuizletModule,
+            editing: false,
+            content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
           }
         ],
         editing: true
       }
-    },
-    components: {
-      TextModule,
-      VideoModule
     },
     methods: {
       removeModule(module) {
