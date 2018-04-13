@@ -1,15 +1,16 @@
 <template>
   <div class="notebook">
-    <component v-for="module in sortedModules"
-               :key="module.key"
-               :is="wrapper"
-               :content="module.module">
-    </component>
+    <div v-for="module in modules">
+      <component :key="module.key"
+                 :is="module.module"
+                 :content="module.content">
+      </component>
+      <button @click="removeModule(module)">-</button>
+    </div>
   </div>
 </template>
 
 <script>
-  import ModuleWrapper from './modules/ModuleWrapper.vue'
   import TextModule from './modules/TextModule.vue'
   import VideoModule from './modules/VideoModule.vue'
 
@@ -17,36 +18,34 @@
     name: "NoteBook",
     data() {
       return {
-        wrapper: ModuleWrapper,
         modules: [
           {
             module: TextModule,
-            position: 0
+            content: {text: "EIJFOJ"}
           },
           {
             module: TextModule,
-            position: 1
+            content: {text: "awegjOE"}
           },
           {
             module: VideoModule,
-            position: 2
+            content: {}
           }
         ]
       }
     },
     components: {
-      ModuleWrapper
+      TextModule,
+      VideoModule
     },
-    computed: {
-      sortedModules() {
-        function compare(l, r) {
-          if (l.position < r.position) {
-            return -1;
-          } else if (l.position > r.position) {
-            return 1;
+    methods: {
+      removeModule(module) {
+        for (var i = 0; i < this.modules.length; i++) {
+          if (this.modules[i] === module) {
+            this.modules.splice(i, 1);
+            return;
           }
         }
-        return this.modules.sort(compare);
       }
     }
   }
