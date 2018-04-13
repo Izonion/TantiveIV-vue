@@ -6,6 +6,11 @@
 
 <script>
   export default {
-    name: "SignIn"
+    name: "SignIn",
+    data() {
+      return {
+        
+      }
+    }
   }
 </script>

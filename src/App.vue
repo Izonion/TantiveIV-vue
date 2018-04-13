@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Header />
-    <component is="bodyView"></component>
+    <component :is="bodyView"
+               @click="switchToSignIn"></component>
   </div>
 </template>
 
@@ -20,6 +21,11 @@ export default {
   data() {
     return {
       bodyView: NoteBook
+    }
+  },
+  methods: {
+    switchToSignIn() {
+      this.bodyView = SignIn;
     }
   }
 }
