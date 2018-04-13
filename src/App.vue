@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header @signInEvent="switchToSignIn"/>
+    <Header @goHome="switchToHome"
+            @signInEvent="switchToSignIn"/>
     <component :is="bodyView"
                @click="switchToSignIn"></component>
   </div>
@@ -29,6 +30,9 @@ export default {
       this.bodyView = SignIn;
       //this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
       //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
+    },
+    switchToHome() {
+      this.bodyView = NoteBook;
     }
   },
   created() {

@@ -1,7 +1,7 @@
 <template>
-  <div class="col-lg-2">
-    <div class="btn-toolbar" v-if="expanded">
-      <div class="btn-group mr-2">
+  <div class="col col-10 justify-content-center">
+    <div class="btn-toolbar mb-3 justify-content-center" v-if="expanded" role="toolbar">
+      <div class="btn-group mr-2" role="group">
         <button v-for="(moduleType, key) in moduleTypes"
                 class="btn btn-info"
                 @click="$emit('addModule', moduleType)">{{key}}</button>
@@ -10,7 +10,7 @@
         <button class="btn btn-danger" @click="expanded = false">-</button>
       </div>
     </div>
-    <div v-else>
+    <div class="mb-3" v-else>
       <button class="btn btn-success" @click="expanded = true">+</button>
     </div>
   </div>
