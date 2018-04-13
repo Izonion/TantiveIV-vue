@@ -10,6 +10,7 @@
 import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
+import messageHandler from './assets/js/messages'
 
 export default {
   name: 'app',
@@ -31,7 +32,7 @@ export default {
   created() {
     try {
       var webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {console.log("Web Socket Open")};
+      webSocket.onopen = (event) => {messageHandler(event)};
     } catch (err) {
       console.log("Could not connect to server.");
       console.log(err);
