@@ -3,8 +3,8 @@
     <div v-if="editing">
       <textarea class="text-content" v-model.sync="editedContent.embedUrl"></textarea>
     </div>
-    <div v-else>
-      <iframe width="560" height="315" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="aspect-ratio" v-else>
+      <iframe width="100%" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -43,3 +43,18 @@
     }
   }
 </script>
+
+<style scoped>
+  .aspect-ratio {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 51%;
+  }
+  .aspect-ratio iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0; top: 0;
+  }
+</style>
