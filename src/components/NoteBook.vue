@@ -1,17 +1,23 @@
 <template>
   <div class="notebook">
-    <TextModule />
+    <component v-for="(m, key) in modules" :is="m">
+    </component>
   </div>
 </template>
 
 <script>
   import TextModule from './TextModule.vue'
+  import VideoModule from './VideoModule.vue'
 
   export default {
     name: "NoteBook",
     data() {
       return {
-        modules: {}
+        modules: {
+          0: TextModule,
+          1: TextModule,
+          2: VideoModule
+        }
       }
     },
     components: {
