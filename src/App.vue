@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <component is="bodyView"></component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import NoteBook from './components/NoteBook.vue'
+import SignIn from './components/SignIn.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    NoteBook,
+    SignIn
+  },
+  data() {
+    return {
+      bodyView: NoteBook
+    }
   }
 }
 </script>
