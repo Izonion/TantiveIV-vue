@@ -2,11 +2,9 @@
   <div class="module card-body">
     <div v-if="editing">
       <textarea class="text-content" v-model.sync="editedContent.text"></textarea>
-      <button @click="save">Save</button>
     </div>
     <div v-else>
       <p class="text-content" v-text="content.text"></p>
-      <button @click="edit">Edit</button>
     </div>
   </div>
 </template>
@@ -18,25 +16,28 @@
       content: {
         type: Object,
         requred: true
+      },
+      editing: {
+        type: Boolean
       }
     },
     data() {
       return {
-        editing: false,
         editedContent: {}
       }
     },
     methods: {
-      edit() {
-        this.editing = true;
-        this.editedContent = this.content;
-      },
-      save() {
-        this.editing = false;
-        this.contentUpdated(this.editedContent);
-      },
       contentUpdated(newContent) {
         this.$emit('contentUpdated', newContent);
+      }
+    },
+    watch: {
+      editing(val) {
+        if (val) {
+          this.editedContent = this.content;
+        } else {
+          this.contentUpdated(this.editedContent);
+        }
       }
     }
   }

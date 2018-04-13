@@ -6,10 +6,16 @@
           <component :key="module.key"
                      :is="module.module"
                      :content="module.content"
+                     :editing="module.editing"
                      @contentUpdated="updateContent(module, $event)">
           </component>
           <div class="card-footer btn-toolbar justify-content-between">
-            <button class="btn btn-sm btn-secondary card-text" @click="">Edit</button>
+            <button class="btn btn-sm btn-success card-text"
+                    @click="module.editing = false"
+                    v-if="module.editing">Save</button>
+            <button class="btn btn-sm btn-secondary card-text"
+                    @click="module.editing = true"
+                    v-else>Edit</button>
             <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
           </div>
         </div>
@@ -29,14 +35,17 @@
         modules: [
           {
             module: TextModule,
+            editing: false,
             content: {text: "EIJFOJ"}
           },
           {
             module: TextModule,
+            editing: false,
             content: {text: "awegjOE"}
           },
           {
             module: VideoModule,
+            editing: false,
             content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
           }
         ],
