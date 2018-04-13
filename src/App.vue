@@ -11,6 +11,7 @@
 import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
+import messageHandler from './assets/js/messages'
 
 export default {
   name: 'app',
@@ -36,11 +37,8 @@ export default {
   },
   created() {
     try {
-      this.webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {
-        console.log("Web Socket Open");
-        //this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:"test", password:"test", email:"test@test.com"}}));
-      };
+      var webSocket = new WebSocket("ws://study.test:8001/ws");
+      webSocket.onopen = (event) => {webSocket.onmessage = messageHandler;console.log("websocket has opened!!");};
     } catch (err) {
       console.log("Could not connect to server.");
       console.log(err);
