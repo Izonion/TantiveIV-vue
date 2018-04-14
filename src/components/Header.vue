@@ -19,6 +19,10 @@
                 @click="signIn">
           Sign In
         </button>
+        <button class="btn btn-primary"
+                @click="signUp">
+          Sign Up
+        </button>
       </div>
     </div>
   </nav>
@@ -31,6 +35,9 @@
     methods: {
       signIn() {
         this.$emit("signInEvent");
+      },
+      signUp() {
+        this.$emit("signUpEvent");
       }
     }
   }

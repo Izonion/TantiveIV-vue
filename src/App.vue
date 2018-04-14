@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Header @goHome="switchToHome"
-            @signInEvent="switchToSignIn"/>
+            @signInEvent="switchToSignIn"
+            @signUpEvent="switchToSignUp"/>
     <component :is="bodyView"
                @click="switchToSignIn"></component>
   </div>
@@ -12,13 +13,15 @@ import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
 import messageHandler from './assets/js/messages'
+import SignUp from './components/SignUp.vue'
 
 export default {
   name: 'app',
   components: {
     Header,
     NoteBook,
-    SignIn
+    SignIn,
+    SignUp
   },
   data() {
     return {
@@ -30,6 +33,9 @@ export default {
     switchToSignIn() {
       this.bodyView = SignIn;
       //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
+    },
+    switchToSignUp() {
+      this.bodyView = SignUp;
     },
     switchToHome() {
       this.bodyView = NoteBook;

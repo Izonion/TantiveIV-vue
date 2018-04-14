@@ -13,8 +13,8 @@
       <input type="username" id="inputUsername" class="form-control" placeholder="Username" required>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Un</button>
-      <p class="mt-3">Don't have an account? <button class="btn btn-sm btn-secondary">Sign Up</button></p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
   </div>
