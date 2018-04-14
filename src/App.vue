@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :user="user"
+    <Header :messageHandler="messageHandler"
             @goHome="switchToHome"
             @signInEvent="switchToSignIn"
             @signUpEvent="switchToSignUp"/>

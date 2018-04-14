@@ -14,7 +14,17 @@
       <form class="form-inline my-2 my-md-0">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
       </form>
-      <div class="account-nav" style="padding-left: 20px" v-if="user == null">
+      <div class="btn-group" v-if="messageHandler.user">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{messageHandler.user.username}}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" type="button">Action</button>
+          <button class="dropdown-item" type="button">Another action</button>
+          <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+      </div>
+      <div class="account-nav" style="padding-left: 20px" v-else>
         <button class="btn btn-primary"
                 @click="signIn">
           Sign In
@@ -40,7 +50,7 @@
         this.$emit("signUpEvent");
       }
     },
-    props: ['user']
+    props: ['messageHandler']
   }
 </script>
 
