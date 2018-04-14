@@ -12,7 +12,7 @@
       </div>
     </div>
     <div v-else>
-      <button class="btn btn-success" style="width:100%" @click="expanded = true"><i class="fas fa-plus-circle"></i></button>
+      <button class="btn btn-light" style="width:100%" @click="expanded = true"><i class="fas fa-plus-circle"></i></button>
     </div>
   </div>
 </template>

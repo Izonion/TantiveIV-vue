@@ -8,8 +8,8 @@
         <h1>{{this.noteBook.metadata.title}}</h1>
       </div>
       <div class="col-md-1">
-        <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit Page</button>
-        <button v-else class="btn btn-success" @click="editing = false">Save Page</button>
+        <button v-if="!editing" class="btn btn-dark" @click="editing = true">Edit Notebook</button>
+        <button v-else class="btn btn-info" @click="editing = false">Save Notebook</button>
       </div>
     </div>
     <div v-if="noteBook.modules.length !== 0">
@@ -31,10 +31,10 @@
               <div v-if="editing" class="card btn-toolbar col-1" style="padding:0">
                 <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
                 <span v-if="module.editing !== undefined">
-                  <button class="btn btn-lg btn-success card-text" style="width:100%;"
+                  <button class="btn btn-lg btn-info card-text" style="width:100%;"
                           @click="module.editing = false"
                           v-if="module.editing">Save</button>
-                  <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
+                  <button class="btn btn-lg btn-dark card-text" style="width:100%;"
                           @click="module.editing = true"
                           v-else><i class="fas fa-edit"></i></button>
                 </span>
@@ -135,6 +135,12 @@
 </style>
 
 <style>
+  .text-content {
+    font-size: 20pt;
+  }
+  .card {
+    background-color: #7180B9;
+  }
   .editbox {
     width: 100%;
     resize: vertical;
