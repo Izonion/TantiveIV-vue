@@ -17,9 +17,10 @@ class messageHandler {
   ws = null
   cookie = null
 
-  setup (webSocket, cookieModule) {
+  setup (webSocket, cookieModule, vue) {
     this.ws = webSocket
     this.cookie = cookieModule
+    this.vue = vue
   }
 
   handleMessage = (event) => {
@@ -110,6 +111,7 @@ class messageHandler {
     if (!payload.notebook) {
       return
     }
+    this.vue.loadNoteBook(payload.notebook);
     console.log(`notebook available`)
   }
 

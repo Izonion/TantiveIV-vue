@@ -56,86 +56,7 @@
         webSocket: null,
         messageHandler: new messageHandlerClass(),
         selectedNoteBook: 0,
-        noteBooks: [
-            {
-              _id: 12345,
-              metadata: {
-                title: "MyNOTEBOOK",
-                uuid: 12345
-              },
-              modules: [
-                {
-                  module: TextModule,
-                  editing: false,
-                  content: {text: "EIJFOJ"}
-                },
-                {
-                  module: TextModule,
-                  editing: false,
-                  content: {text: "awegjOE"}
-                },
-                {
-                  module: VideoModule,
-                  editing: false,
-                  content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
-                },
-                {
-                  module: ImageModule,
-                  editing: false,
-                  content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
-                },
-                {
-                  module: QuizletModule,
-                  editing: false,
-                  content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
-                },
-                {
-                  module: LinkModule,
-                  editing: false,
-                  content: {url: "https://www.google.com"}
-                }
-              ]
-            },
-            {
-              _id: 1395,
-              metadata: {
-                title: "AP US",
-                uuid: 1395
-              },
-              modules: [
-                {
-                  module: TextModule,
-                  editing: false,
-                  content: {text: "GOERGE WASHH"}
-                },
-                {
-                  module: TextModule,
-                  editing: false,
-                  content: {text: "awegjOE"}
-                },
-                {
-                  module: VideoModule,
-                  editing: false,
-                  content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
-                },
-                {
-                  module: ImageModule,
-                  editing: false,
-                  content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
-                },
-                {
-                  module: QuizletModule,
-                  editing: false,
-                  content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
-                },
-                {
-                  module: LinkModule,
-                  editing: false,
-                  content: {url: "https://www.google.com"}
-                }
-              ]
-            }
-          ]
+        noteBooks: []
       }
     },
     computed: {
@@ -165,8 +86,15 @@
       noteBookFromID(id) {
         console.log(id);
         for (var i = 0; i < this.noteBooks.length; i++) {
-          if (this.noteBooks[i].metadata.uuid == id) {
+          if (this.noteBooks[i]._id == id) {
             return this.noteBooks[i];
+          }
+        }
+      },
+      removeByID(id) {
+        for (var i = 0; i < this.noteBooks.length; i++) {
+          if (this.noteBooks[i]._id == id) {
+            return this.noteBooks.splice(i, 1);
           }
         }
       },
@@ -175,13 +103,21 @@
       },
       createNoteBook() {
         this.webSocket.send(JSON.stringify({type:"CREATE_NOTEBOOK"}));
+      },
+      loadNoteBook(notebook) {
+        var matched = this.noteBookFromID(notebook._id);
+        if (matched) {
+          this.removeByID(notebook._id);
+        }
+        console.log(notebook);
+        this.noteBooks.push(notebook);
       }
     },
     created() {
       try {
         this.webSocket = new WebSocket("ws://study.test:8001/ws");
         this.webSocket.onopen = (event) => {
-          this.messageHandler.setup(this.webSocket,this.$cookie);
+          this.messageHandler.setup(this.webSocket,this.$cookie, this);
           this.webSocket.onmessage = this.messageHandler.handleMessage;
           this.messageHandler.onOpen();
           this.webSocket.send(JSON.stringify({type:"GET_NOTEBOOKS"}));
