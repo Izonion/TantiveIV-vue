@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light rounded">
     <a class="navbar-brand"
        href="#"
-       @click="$emit('goHome')">Self Study <i class="fas fa-book"></i></a>
+       @click="$emit('goHome')"><i class="fas fa-book"></i> Self Study</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
