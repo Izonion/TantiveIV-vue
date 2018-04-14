@@ -106,6 +106,7 @@
         console.log(id);
         for (var i = 0; i < this.noteBooks.length; i++) {
           if (this.noteBooks[i]._id == id) {
+            this.webSocket.send(JSON.stringify({type:"DELETE_NOTEBOOK", payload:{_id: id}}));
             return this.noteBooks.splice(i, 1);
           }
         }
