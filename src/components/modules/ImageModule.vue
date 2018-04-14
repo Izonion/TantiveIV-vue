@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: "VideoModule",
+    name: "ImageModule",
     props: {
       content: {
         type: Object,
