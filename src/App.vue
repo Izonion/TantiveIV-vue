@@ -7,9 +7,12 @@
     <div class="body-comp">
       <SignIn v-if="bodyView == 'SignIn'"
               :webSocket="webSocket"
-              @click="switchToSignIn" />
+              @click="switchToSignIn" 
+              @signUpEvent="switchToSignUp"
+              @signInEvent="switchToHome" />
       <SignUp v-else-if="bodyView == 'SignUp'"
-               :webSocket="webSocket" />
+               :webSocket="webSocket"
+               @signUpEvent="switchToHome" />
       <NoteBookList v-else-if="bodyView == 'NoteBookList'"
                     :noteBookMetadatas="noteBooks.map(function(noteBook) {return noteBook.metadata})"
                     @noteBookChoose="switchToNoteBook($event)"

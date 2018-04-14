@@ -29,6 +29,7 @@
     methods: {
       submit() {
         this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:this.username, password:this.password, email:this.email}}));
+        this.$emit('signUpEvent');
       }
     },
     data() {

@@ -6,7 +6,7 @@
         <div style="font-size:3em; color:#02577a">
           <i class="fas fa-book"></i>
         </div>
-        <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+        <h1 class="h3 mb-3 font-weight-normal" >Sign In</h1>
         <label for="inputUsername" class="sr-only">Username</label>
         <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus v-model.sync="username">
         <label for="inputPassword" class="sr-only">Password</label>
@@ -33,6 +33,7 @@
     methods: {
       submit() {
         this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:this.username, password:this.password}}));
+        this.$emit('signInEvent');
       }
     },
     data() {
