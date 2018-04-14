@@ -82,7 +82,7 @@
     data() {
       return {
         noteBook: {modules: []},
-        editing: true,
+        editing: false,
         moduleTypes: {
           "TextModule": TextModule,
           "VideoModule": VideoModule,
