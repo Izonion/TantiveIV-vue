@@ -5,18 +5,18 @@
           <button class="btn btn-info" style="border-radius:50px" @click="goBack"><i class="fas fa-chevron-circle-left"></i> Back</button>
       </div>
       <div class="col-md-10" style="color: white">
-        <h1>{{this.inNoteBook.metadata.title}}</h1>
+        <h1>{{this.noteBook.metadata.title}}</h1>
       </div>
       <div class="col-md-1">
         <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit Page</button>
         <button v-else class="btn btn-success" @click="editing = false">Save Page</button>
       </div>
     </div>
-    <div v-if="modules.length !== 0">
-      <div v-for="module in modules">
+    <div v-if="noteBook.modules.length !== 0">
+      <div v-for="module in noteBook.modules">
         <div v-if="editing" class="row row-offset justify-content-center">
           <AddModule class="col-md-10"
-                     @addModule="addModule($event, modules.indexOf(module))" />
+                     @addModule="addModule($event, noteBook.modules.indexOf(module))" />
         </div>
         <div class="row row-offset justify-content-center">
           <div class="col-md-10">
@@ -52,7 +52,7 @@
     </div>
     <div v-if="editing" class="row row-offset justify-content-center">
       <AddModule class="col-md-10"
-                 @addModule="addModule($event, modules.length)" />
+                 @addModule="addModule($event, noteBook.modules.length)" />
     </div>
   </div>
 </template>
@@ -71,13 +71,11 @@
     name: "NoteBook",
     props: ['inNoteBook'],
     created() {
-      this.modules = this.inNoteBook.modules;
-      this.metadata = this.inNoteBook.metadata;
+      this.noteBook = this.inNoteBook;
     },
     data() {
       return {
-        metadata: {},
-        modules: [],
+        noteBook: {},
         editing: true
       }
     },
@@ -87,9 +85,9 @@
     },
     methods: {
       removeModule(module) {
-        for (var i = 0; i < this.modules.length; i++) {
-          if (this.modules[i] === module) {
-            this.modules.splice(i, 1);
+        for (var i = 0; i < this.noteBook.modules.length; i++) {
+          if (this.noteBook.modules[i] === module) {
+            this.noteBook.modules.splice(i, 1);
             return;
           }
         }
@@ -98,7 +96,7 @@
         module.content = newContent;
       },
       addModule(newModule, index) {
-        this.modules.splice(index, 0, {
+        this.noteBook.modules.splice(index, 0, {
           module: newModule,
           editing: true,
           content: {}

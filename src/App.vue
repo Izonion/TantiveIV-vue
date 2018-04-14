@@ -79,14 +79,20 @@
         this.selectedNoteBook = 0;
       },
       switchToNoteBook(noteBookID) {
+        console.log("STNB");
         console.log(noteBookID);
         this.selectedNoteBook = noteBookID;
         this.bodyView = 'NoteBook';
       },
       noteBookFromID(id) {
+        console.log("IIII");
         console.log(id);
         for (var i = 0; i < this.noteBooks.length; i++) {
-          if (this.noteBooks[i]._id == id) {
+          console.log("IIIIIIII");
+          console.log(this.noteBooks[i]._id);
+          if (this.noteBooks[i]._id === id) {
+            console.log("IR");
+            console.log(this.noteBooks[i]);
             return this.noteBooks[i];
           }
         }
@@ -110,7 +116,9 @@
           this.removeByID(notebook._id);
         }
         console.log(notebook);
+        notebook.metadata.uuid = notebook._id;
         this.noteBooks.push(notebook);
+        console.log("Notebook Loaded!")
       }
     },
     created() {
