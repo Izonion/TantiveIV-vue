@@ -33,7 +33,6 @@ export default {
   methods: {
     switchToSignIn() {
       this.bodyView = SignIn;
-      //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
     },
     switchToSignUp() {
       this.bodyView = SignUp;

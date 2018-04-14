@@ -8,12 +8,12 @@
       </div>
       <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus v-model.sync="username">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model.sync="password">
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me" v-model="rememberMe"> Remember me
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
@@ -29,7 +29,19 @@
 <script>
   export default {
     name: "SignIn",
-    props: ['webSocket']
+    props: ['webSocket'],
+    methods: {
+      submit() {
+        this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:this.username, password:this.password}}));
+      }
+    },
+    data() {
+      return {
+        username: "",
+        password: "",
+        rememberMe: false
+      }
+    }
   }
 </script>
 
