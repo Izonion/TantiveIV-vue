@@ -4,9 +4,11 @@
             @goHome="switchToHome"
             @signInEvent="switchToSignIn"
             @signUpEvent="switchToSignUp"/>
-    <component :is="bodyView"
-               :webSocket="webSocket"
-               @click="switchToSignIn"></component>
+    <div class="body-comp">
+      <component :is="bodyView"
+                 :webSocket="webSocket"
+                 @click="switchToSignIn"></component>
+    </div>
     <footer>
       <div class="py-3 text-center">
           <i class="fas fa-copyright"></i> 2018
@@ -72,15 +74,21 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  #app {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
-footer {
-  background-color: #DCB13C;
-}
+  .body-comp {
+    flex-grow: 1;
+  }
+
+  footer {
+    background-color: #DCB13C;
+  }
 </style>
