@@ -1,8 +1,8 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <h5>Link Label:</h5> <textarea class="text-content" id="linkUrl" v-model="editedContent.url" placeholder="Google" style="width:100%"></textarea>
-      <h5>Link Url:</h5><textarea class="text-content" id="linkLabel" v-model="editedContent.label" placeholder="https://www.google.com" style="width:100%"></textarea>
+      <h5>Link Label:</h5> <textarea class="text-content" id="linkLabel" v-model="editedContent.label" placeholder="Google" style="width:100%"></textarea>
+      <h5>Link Url:</h5><textarea class="text-content" id="linkUrl" v-model="editedContent.url" placeholder="https://www.google.com" style="width:100%"></textarea>
       <i><i class="fas fa-question-circle mr-1"></i> Fill in the top box how you want the link to look on your page, and put the url in the second box. Make sure to include 'www'!</i>
 
     </div>
