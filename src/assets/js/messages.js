@@ -6,15 +6,15 @@ const handleMessage = (event) => {
   console.log(event)
   try {
     let message = JSON.parse(event.data)
+    if (!message.type) {
+      console.log(`can not understand message (no type attribute)`)
+      return
+    }
+    route(message)
   } catch {
     console.log(`can not understand message (type not of JSON)`)
     return
   }
-  if (!message.type) {
-    console.log(`can not understand message (no type attribute)`)
-    return
-  }
-  route(message)
 }
 
 const routes = {

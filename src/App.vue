@@ -4,6 +4,7 @@
             @signInEvent="switchToSignIn"
             @signUpEvent="switchToSignUp"/>
     <component :is="bodyView"
+               :webSocket="webSocket"
                @click="switchToSignIn"></component>
   </div>
 </template>
@@ -43,8 +44,8 @@ export default {
   },
   created() {
     try {
-      var webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {webSocket.onmessage = messageHandler;console.log("websocket has opened!!");};
+      this.webSocket = new WebSocket("ws://study.test:8001/ws");
+      this.webSocket.onopen = (event) => {this.webSocket.onmessage = messageHandler;console.log("websocket has opened!!");};
     } catch (err) {
       console.log("Could not connect to server.");
       console.log(err);

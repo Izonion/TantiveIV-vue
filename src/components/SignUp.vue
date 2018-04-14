@@ -8,13 +8,13 @@
       </div>
       <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus v-model.sync="email">
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required>
+      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required v-model.sync="username">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-      
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model.sync="password">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" @click="submit">Sign Up</button>
+
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
   </div>
@@ -25,9 +25,17 @@
 <script>
   export default {
     name: "SignUp",
+    props: ['webSocket'],
+    methods: {
+      submit() {
+        this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:this.username, password:this.password, email:this.email}}));
+      }
+    },
     data() {
       return {
-
+        email: "",
+        username: "",
+        password: ""
       }
     }
   }
