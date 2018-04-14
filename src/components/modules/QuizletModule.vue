@@ -2,7 +2,7 @@
   <div class="module card-body">
     <div v-if="editing">
       <h5>Quizlet Embed Url:</h5>
-      <textarea class="editbox ext-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
+      <textarea class="editbox ext-content" id="textModule" v-model="editedContent.quizUrl"></textarea>
       <i><i class="fas fa-question-circle mr-1"></i> This box requires a quizlet link, which you can get from copy/pasting the url.</i>
     </div>
     <div v-else>
@@ -53,7 +53,7 @@
       embedQuiz() {
         var quizUrl = this.editedContent.quizUrl;
         if (quizUrl.indexOf("quizlet.com/") > -1){
-          return "https://quizlet.com/" + userUrl.substring(userUrl.indexOf("m/") + 2, userUrl.indexOf("m/") + 11) + "/learn/embed";
+          return "https://quizlet.com/" + quizUrl.substring(quizUrl.indexOf("m/") + 2, quizUrl.indexOf("m/") + 11) + "/learn/embed";
         } else {
           return quizUrl;
         }

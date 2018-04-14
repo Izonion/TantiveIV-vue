@@ -12,6 +12,7 @@
     </div>
     <div class="row justify-content-center">
       <NoteBookListItem v-for="noteBook in noteBookMetadatas"
+                        :key="noteBook.key"
                         :metadata="noteBook"
                         :editing="editing"
                         @noteBookChoose="$emit('noteBookChoose', $event)" />

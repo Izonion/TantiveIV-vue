@@ -13,7 +13,8 @@
       </div>
     </div>
     <div v-if="noteBook.modules.length !== 0">
-      <div v-for="module in noteBook.modules">
+      <div v-for="module in noteBook.modules"
+           :key="module.key">
         <div v-if="editing" class="row row-offset justify-content-center">
           <AddModule class="col-md-10"
                      @addModule="addModule($event, noteBook.modules.indexOf(module))" />
@@ -46,7 +47,7 @@
     <div v-else>
       <div class="row row-offset justify-content-center">
         <div class="col-md-10">
-          <PlaceholderModule class="card" 
+          <PlaceholderModule class="card"
               :editing ="editing" />
         </div>
       </div>
@@ -80,7 +81,6 @@
     },
     data() {
       return {
-<<<<<<< HEAD
         noteBook: {modules: []},
         editing: true,
         moduleTypes: {
@@ -91,10 +91,6 @@
           "LinkModule": LinkModule,
           "MarkDownModule": MarkDownModule
         }
-=======
-        noteBook: {},
-        editing: false
->>>>>>> b7c68c1db7cfaa1219c1ba8c985a67e3b13f48fa
       }
     },
     components: {

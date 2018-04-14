@@ -2,7 +2,7 @@
   <div class="module card-body">
     <div v-if="editing" style="text-align: left">
       <h5>Video Url:</h5>
-      <textarea class="editbox text-content" v-model.sync="editedContent.userUrl"></textarea>
+      <textarea class="editbox text-content" v-model="editedContent.userUrl"></textarea>
       <i><i class="fas fa-question-circle mr-1"></i>This box requires a youtube link, which you can get by copy/pasting the url or by clicking youtube's share button.</i>
     </div>
     <div class="aspect-ratio" v-else>

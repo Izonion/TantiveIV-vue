@@ -1,7 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <textarea class="editbox text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
+      <textarea class="editbox text-content" id="textModule" v-model="editedContent.text"></textarea>
     </div>
     <div v-else>
       <vue-markdown>{{content.text}}</vue-markdown>

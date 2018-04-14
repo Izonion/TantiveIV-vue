@@ -3,6 +3,7 @@
     <div class="btn-toolbar justify-content-center" v-if="expanded" role="toolbar">
       <div class="btn-group mr-2" role="group">
         <button v-for="(moduleType, key) in moduleTypes"
+                :key="key"
                 class="btn btn-info"
                 @click="selectModule(moduleType)">{{key}}</button>
       </div>
@@ -17,13 +18,6 @@
 </template>
 
 <script>
-  import TextModule from './TextModule.vue'
-  import VideoModule from './VideoModule.vue'
-  import ImageModule from './ImageModule.vue'
-  import QuizletModule from './QuizletModule.vue'
-  import LinkModule from './LinkModule.vue'
-  import MarkDownModule from './MarkDownModule.vue'
-
   export default {
     name: "AddModule",
     data() {

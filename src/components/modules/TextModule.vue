@@ -2,7 +2,7 @@
   <div class="module card-body">
     <div v-if="editing">
       <h5>Text:</h5>
-      <textarea class="editbox text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
+      <textarea class="editbox text-content" id="textModule" v-model="editedContent.text"></textarea>
     </div>
     <div v-else>
       <p class="text-content" v-text="content.text"></p>

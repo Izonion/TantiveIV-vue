@@ -8,9 +8,9 @@
         </div>
         <h1 class="h3 mb-3 font-weight-normal" >Sign In</h1>
         <label for="inputUsername" class="sr-only">Username</label>
-        <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus v-model.sync="username">
+        <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus v-model="username">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model.sync="password">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
         <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me" v-model="rememberMe"> Remember me

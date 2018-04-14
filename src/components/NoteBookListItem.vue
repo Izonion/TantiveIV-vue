@@ -9,7 +9,7 @@
           <h5 v-if="!editing" class="card-title">
             {{metadata.title}}
           </h5>
-          <textarea v-else class="editbox text-content" id="textModule" v-model.sync="metadata.title"></textarea>
+          <textarea v-else class="editbox text-content" id="textModule" v-model="metadata.title"></textarea>
           <p class="card-text"></p>
         </div>
       </button>
@@ -21,7 +21,7 @@
           <h5 v-if="!editing" class="card-title">
             {{metadata.title}}
           </h5>
-          <textarea v-else class="editbox text-content" id="textModule" v-model.sync="metadata.title"></textarea>
+          <textarea v-else class="editbox text-content" id="textModule" v-model="metadata.title"></textarea>
           <p class="card-text"></p>
         </div>
       </button>
