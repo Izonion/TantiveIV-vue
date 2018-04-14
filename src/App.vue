@@ -78,6 +78,7 @@
       switchToHome() {
         this.bodyView = 'NoteBookList';
         if (this.selectedNoteBook != 0) {
+          console.log("HI");
           console.log(this.noteBookFromID(this.selectedNoteBook));
           this.saveToServer(this.noteBookFromID(this.selectedNoteBook));
         }
@@ -116,15 +117,18 @@
           this.removeByID(notebook._id);
         }
         console.log(notebook);
-        notebook.metadata.uuid = notebook._id;
+        this.$set(notebook.metadata, 'uuid', notebook._id);
         console.log(notebook.metadata);
         this.noteBooks.push(notebook);
         console.log("Notebook Loaded!")
       },
       loadNoteBooks(notebooks) {
         console.log("NOPE");
-        console.log(notebooks);
         this.$set(this, 'noteBooks', notebooks);
+        for (var i = 0; i < this.noteBooks.length; i++) {
+          this.$set(this.noteBooks[i].metadata, 'uuid', this.noteBooks[i]._id);
+        }
+        console.log(this.noteBooks);
       },
       updateNoteBook(noteBook) {
         console.log("LOPE");
@@ -132,7 +136,7 @@
           if (this.noteBooks[i]._id === noteBook._id) {
             console.log("JOPE");
             console.log(noteBook);
-            this.$set(this.noteBooks, i, noteBook);
+            this.noteBooks[i] = noteBook;
             return;
           }
         }
