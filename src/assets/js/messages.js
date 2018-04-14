@@ -48,7 +48,8 @@ class messageHandler {
     [this.types.SEND_SID]: (message) => {return null},
     [this.types.LOG_IN_SUCCESSFULL]: (message) => {this.loginSuccess(message.payload)},
     [this.types.NOTEBOOK_CREATION_SUCCESS]: (message) => {this.notebookCreationSuccess(message.payload)},
-    [this.types.SET_NOTEBOOKS]: (message) => {this.setNotebooks(message.payload)}
+    [this.types.SET_NOTEBOOKS]: (message) => {this.setNotebooks(message.payload)},
+    [this.types.SET_NOTEBOOK]: (message) => {this.setNotebook(message.payload)},
   }
 
   route = (message) => {
@@ -117,6 +118,13 @@ class messageHandler {
       return
     }
     console.log('notebooks available')
+  }
+
+  setNotebook (payload) {
+    if (!payload || !payload.notebook) {
+      return
+    }
+    console.log(`notebook available`)
   }
 }
 
