@@ -1,6 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
+      <h5>Quizlet Embed Url:</h5>
       <textarea class="editbox ext-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
     </div>
     <div v-else>

@@ -1,6 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
+      <h5>Image Url:</h5>
       <textarea class="editbox text-content" v-model.sync="editedContent.imageUrl"></textarea>
     </div>
     <div v-else>

@@ -1,6 +1,7 @@
 <template>
   <div class="module card-body">
-    <div v-if="editing">
+    <div v-if="editing" style="text-align: left">
+      <h5>Video Url:</h5>
       <textarea class="editbox text-content" v-model.sync="editedContent.userUrl"></textarea>
     </div>
     <div class="aspect-ratio" v-else>

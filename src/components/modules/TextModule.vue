@@ -1,6 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
+      <h5>Text:</h5>
       <textarea class="editbox text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
     </div>
     <div v-else>
