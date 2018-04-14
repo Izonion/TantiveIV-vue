@@ -1,17 +1,17 @@
 <template>
   <div class="col col-10 justify-content-center">
     <div class="btn-toolbar mb-3 justify-content-center" v-if="expanded" role="toolbar">
-      <div class="btn-group mr-2" role="group">
+      <div class="btn-group mr-2 mb-5" role="group">
         <button v-for="(moduleType, key) in moduleTypes"
                 class="btn btn-info"
-                @click="$emit('addModule', moduleType)">{{key}}</button>
+                @click="selectModule(moduleType)">{{key}}</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group mb-5" role="group">
         <button class="btn btn-danger" @click="expanded = false"><i class="fas fa-minus-circle"></i></button>
       </div>
     </div>
-    <div class="mb-3" v-else>
-      <button class="btn btn-success" @click="expanded = true"><i class="fas fa-plus-circle"></i></button>
+    <div class="mb-5" v-else>
+      <button class="btn btn-success" style="width:100%" @click="expanded = true"><i class="fas fa-plus-circle"></i></button>
     </div>
   </div>
 </template>
@@ -33,6 +33,12 @@
           "Image": ImageModule,
           "Quizlet": QuizletModule
         }
+      }
+    },
+    methods: {
+      selectModule(moduleType) {
+        this.$emit('addModule', moduleType);
+        this.expanded = false;
       }
     }
   }
