@@ -1,46 +1,101 @@
-const types = {
-  SET_COOKIE: 'SET_COOKIE',
-}
+class messageHandler {
+  types = {
+    SET_COOKIE: 'SET_COOKIE',
+    GET_COOKIE: 'GET_COOKIE',
+    GET_SESSION: "GET_SESSION",
+    SET_SESSION: "SET_SESSION",
+    GET_NOTEBOOKS: "GET_NOTEBOOKS",
+    SET_NOTEBOOK: "SET_NOTEBOOK",
+    LOG_IN_SUCCESSFULL: "LOG_IN_SUCCESSFULL",
+    REGISTER: "REGISTER",
+    LOGIN: "LOGIN",
+  }
 
-const handleMessage = (event) => {
-  console.log(event)
-  try {
-    let message = JSON.parse(event.data)
+  ws = null
+  cookie = null
+
+  setup (webSocket, cookieModule) {
+    this.ws = webSocket
+    this.cookie = cookieModule
+  }
+
+  handleMessage = (event) => {
+    console.log(event)
+    let message
+    try {
+      message = JSON.parse(event.data)
+    } catch (err) {
+      console.log(`can not understand message (type not of JSON)`)
+      return
+    }
+    console.log(message)
     if (!message.type) {
       console.log(`can not understand message (no type attribute)`)
       return
     }
-    route(message)
-  } catch {
-    console.log(`can not understand message (type not of JSON)`)
-    return
+    this.route(message)
+  }
+
+  makeMessage(type, payload) {
+    return {type, payload}
+  }
+
+  routes = {
+    [this.types.SET_COOKIE]: (message) => {this.setCookie(message.payload)},
+    [this.types.SEND_SID]: (message) => {return null},
+    [this.types.LOG_IN_SUCCESSFULL]: (message) => {this.loginSuccess(message.payload)},
+  }
+
+  route = (message) => {
+    console.log("routing")
+    let linked = this.routes[message.type]
+    if (!linked) {
+      console.log(`can not understand message of type '${message.type}'`)
+    }
+    console.log("got linked function")
+    console.log(typeof linked)
+    if(typeof linked == 'function') {
+      linked(message)
+    }
+  }
+
+  DEFAULTCOOKIEOPTIONS = {expires: 1, domain:'.study.test'}
+
+  setCookie (data) {
+    console.log(this.cookie)
+    if(!data.name) {
+      console.log('can not set cookie if name not given')
+      return
+    }
+    if (!data.value) {
+      console.log('can not sest cookie if value not given')
+    }
+    let options = Object.assign({}, data.options, this.DEFAULTCOOKIEOPTIONS)
+    this.cookie.set(data.name, data.value, options)
+  }
+
+  loginSuccess(payload) {
+    if (!payload.user) {
+      return
+    }
+    let user = payload.user
+    console.log("user available")
+    //set user someplace
+    this.user = user
+  }
+
+  onOpen () {
+    console.log(this.cookie)
+    let sessionID = this.cookie.get("sessionID")
+    if (!sessionID) {
+      this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_SESSION, null)))
+    } else {
+      this.ws.send(JSON.stringify(this.makeMessage(this.types.SET_SESSION, {sessionID})))
+    }
+    //this.ws.send(JSON.stringify(this.makeMessage(this.types.REGISTER, {username: "testUser", password: "testpass", email:"test@test.com"})))
+    this.ws.send(JSON.stringify(this.makeMessage(this.types.LOGIN, {username: "testUser", password:"testpass"})))
+    this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_NOTEBOOKS, null)))
   }
 }
 
-const routes = {
-  [types.SET_COOKIE]: (message) => {setCookie(message.payload)}
-}
-
-const route = (message) => {
-  let linked = routes[message.type]
-  if (!linked) {
-    console.log(`can not understand message of type '${message.type}'`)
-  }
-  linked(message)
-}
-
-const DEFAULTCOOKIEOPTIONS = {expires: 1, domain:'.study.test'}
-
-function setCookie (data) {
-  if(!data.name) {
-    console.log('can not set cookie if name not given')
-    return
-  }
-  if (!data.value) {
-    console.log('can not sest cookie if value not given')
-  }
-  let options = Object.assign({}, data.options, DEFAULTCOOKIEOPTIONS)
-  this.$cookie.set(data.name, data.value, options)
-}
-
-export default handleMessage
+export default messageHandler
