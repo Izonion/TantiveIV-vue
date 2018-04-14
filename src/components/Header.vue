@@ -64,6 +64,6 @@
   }
 
   .navbar-brand:hover {
-    color: #404040;
+    color: white;
   }
 </style>
