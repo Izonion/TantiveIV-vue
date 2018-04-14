@@ -7,6 +7,11 @@
     <component :is="bodyView"
                :webSocket="webSocket"
                @click="switchToSignIn"></component>
+    <footer>
+      <div class="py-3 text-center">
+          <i class="fas fa-copyright"></i> 2018
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -73,5 +78,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+footer {
+  background-color: #DCB13C;
 }
 </style>

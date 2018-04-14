@@ -1,5 +1,5 @@
 <template>
-  <div class="notebook container">
+  <div class="notebook container mb-4">
     <div v-for="module in modules">
       <div class="row row-offset justify-content-center">
         <div class="col-md-10">
