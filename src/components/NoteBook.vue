@@ -23,9 +23,6 @@
                 <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
                         @click="module.editing = true"
                         v-else>Edit</button>
-                <button class="btn btn-lg btn-secondary card-text"
-                        @click="moveModule(module, 0)"
-                        >Move to 0</button>
               </span>
             </div>
           </div>
@@ -107,19 +104,6 @@
           editing: false,
           content: {}
         });
-      },
-      moveModule(module, index){
-        while (index < 0) {
-            index += this.modules.length;
-        }
-        if (index >= this.modules.length) {
-            var k = index - arr.length;
-            while ((k--) + 1) {
-                this.modules.push(undefined);
-            }
-        }
-         this.modules.splice(index, 0, this.modules.splice(this.modules.indexOf(module), 1)[0]);
-       return modules;
       }
     }
   }
