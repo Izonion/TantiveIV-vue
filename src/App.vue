@@ -25,6 +25,7 @@ import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
 import messageHandlerClass from './assets/js/messages'
 import SignUp from './components/SignUp.vue'
+import VueMarkdown from 'vue-markdown'
 
 export default {
   name: 'app',
@@ -32,7 +33,8 @@ export default {
     Header,
     NoteBook,
     SignIn,
-    SignUp
+    SignUp,
+    VueMarkdown,
   },
   data() {
     return {
