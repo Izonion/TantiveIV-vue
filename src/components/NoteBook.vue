@@ -56,40 +56,15 @@
 
   export default {
     name: "NoteBook",
+    props: ['inNoteBook'],
+    created() {
+      this.modules = this.inNoteBook.modules;
+      this.metadata = this.inNoteBook.metadata;
+    },
     data() {
       return {
-        modules: [
-          {
-            module: TextModule,
-            editing: false,
-            content: {text: "EIJFOJ"}
-          },
-          {
-            module: TextModule,
-            editing: false,
-            content: {text: "awegjOE"}
-          },
-          {
-            module: VideoModule,
-            editing: false,
-            content: {embedUrl: "https://www.youtube.com/embed/C0DPdy98e4c"}
-          },
-          {
-            module: ImageModule,
-            editing: false,
-            content: {imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Monnaie_de_Bactriane%2C_Eucratide_I%2C_2_faces.jpg"}
-          },
-          {
-            module: QuizletModule,
-            editing: false,
-            content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
-          },
-          {
-            module: LinkModule,
-            editing: false,
-            content: {url: "https://www.google.com"}
-          }
-        ],
+        metadata: {},
+        modules: [],
         editing: true
       }
     },
