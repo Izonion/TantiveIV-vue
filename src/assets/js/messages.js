@@ -93,8 +93,8 @@ class messageHandler {
       this.ws.send(JSON.stringify(this.makeMessage(this.types.SET_SESSION, {sessionID})))
     }
     //this.ws.send(JSON.stringify(this.makeMessage(this.types.REGISTER, {username: "testUser", password: "testpass", email:"test@test.com"})))
-    this.ws.send(JSON.stringify(this.makeMessage(this.types.LOGIN, {username: "testUser", password:"testpass"})))
-    this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_NOTEBOOKS, null)))
+    // this.ws.send(JSON.stringify(this.makeMessage(this.types.LOGIN, {username: "testUser", password:"testpass"})))
+    // this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_NOTEBOOKS, null)))
   }
 }
 
