@@ -80,9 +80,8 @@
     },
     data() {
       return {
-<<<<<<< HEAD
         noteBook: {modules: []},
-        editing: true,
+        editing: false,
         moduleTypes: {
           "TextModule": TextModule,
           "VideoModule": VideoModule,
@@ -91,10 +90,6 @@
           "LinkModule": LinkModule,
           "MarkDownModule": MarkDownModule
         }
-=======
-        noteBook: {},
-        editing: false
->>>>>>> b7c68c1db7cfaa1219c1ba8c985a67e3b13f48fa
       }
     },
     components: {
