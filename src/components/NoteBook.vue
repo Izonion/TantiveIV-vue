@@ -4,14 +4,17 @@
       <div class="col-md-1">
           <button class="btn btn-info" style="border-radius:50px" @click="goBack"><i class="fas fa-chevron-circle-left"></i> Back</button>
       </div>
-      <div class="col-md-10">
-        <h1>TITLE</h1>
+      <div class="col-md-10" style="color: white">
+        <h1>{{this.inNoteBook.metadata.title}}</h1>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit Page</button>
+        <button v-else class="btn btn-success" @click="editing = false">Save Page</button>
+      </div>
     </div>
     <div v-if="modules.length !== 0">
       <div v-for="module in modules">
-        <div class="row row-offset justify-content-center">
+        <div v-if="editing" class="row row-offset justify-content-center">
           <AddModule class="col-md-10"
                      @addModule="addModule($event, modules.indexOf(module))" />
         </div>
@@ -24,7 +27,7 @@
                            :editing="module.editing"
                            @contentUpdated="updateContent(module, $event)"></component>
              </div>
-              <div class="card btn-toolbar col-1" style="padding:0">
+              <div v-if="editing" class="card btn-toolbar col-1" style="padding:0">
                 <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
                 <span v-if="module.editing !== undefined">
                   <button class="btn btn-lg btn-success card-text" style="width:100%;"
@@ -47,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="row row-offset justify-content-center">
+    <div v-if="editing" class="row row-offset justify-content-center">
       <AddModule class="col-md-10"
                  @addModule="addModule($event, modules.length)" />
     </div>
@@ -62,6 +65,7 @@
   import AddModule from './modules/AddModule.vue'
   import LinkModule from './modules/LinkModule.vue'
   import PlaceholderModule from './modules/PlaceholderModule.vue'
+  import MarkDownModule from './modules/MarkDownModule.vue'
 
   export default {
     name: "NoteBook",
