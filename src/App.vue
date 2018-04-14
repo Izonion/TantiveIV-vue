@@ -7,7 +7,7 @@
     <div class="body-comp">
       <SignIn v-if="bodyView == 'SignIn'"
               :webSocket="webSocket"
-              @click="switchToSignIn" 
+              @click="switchToSignIn"
               @signUpEvent="switchToSignUp"
               @signInEvent="switchToHome" />
       <SignUp v-else-if="bodyView == 'SignUp'"
@@ -129,7 +129,7 @@
           this.messageHandler.setup(this.webSocket,this.$cookie, this);
           this.webSocket.onmessage = this.messageHandler.handleMessage;
           this.messageHandler.onOpen();
-          this.webSocket.send(JSON.stringify({type:"GET_NOTEBOOKS"}));
+          setTimeout(()=>{this.webSocket.send(JSON.stringify({type:"GET_NOTEBOOKS"}))}, 100);
           console.log("websocket has opened!!");};
       } catch (err) {
         console.log("Could not connect to server.");
