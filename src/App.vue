@@ -105,6 +105,7 @@
         }
       },
       saveToServer(noteBook) {
+        console.log("SAVE");
         console.log(noteBook);
         this.webSocket.send(JSON.stringify({type:"SET_NOTEBOOK", payload:{notebook: noteBook}}));
       },

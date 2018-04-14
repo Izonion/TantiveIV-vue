@@ -30,12 +30,12 @@
       return {
         expanded: false,
         moduleTypes: {
-          "Text": TextModule,
-          "Video": VideoModule,
-          "Image": ImageModule,
-          "Quizlet": QuizletModule,
-          "Link": LinkModule,
-          "MD": MarkDownModule
+          "Text": 'TextModule',
+          "Video": 'VideoModule',
+          "Image": 'ImageModule',
+          "Quizlet": 'QuizletModule',
+          "Link": 'LinkModule',
+          "MD": 'MarkDownModule'
         }
       }
     },

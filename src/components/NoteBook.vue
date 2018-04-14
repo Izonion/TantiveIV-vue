@@ -79,13 +79,27 @@
     },
     data() {
       return {
-        noteBook: {},
-        editing: true
+        noteBook: {modules: []},
+        editing: true,
+        moduleTypes: {
+          "TextModule": TextModule,
+          "VideoModule": VideoModule,
+          "ImageModule": ImageModule,
+          "QuizletModule": QuizletModule,
+          "LinkModule": LinkModule,
+          "MarkDownModule": MarkDownModule
+        }
       }
     },
     components: {
       AddModule,
-      PlaceholderModule
+      PlaceholderModule,
+      TextModule,
+      VideoModule,
+      ImageModule,
+      QuizletModule,
+      LinkModule,
+      MarkDownModule
     },
     methods: {
       removeModule(module) {
@@ -100,11 +114,10 @@
         module.content = newContent;
       },
       addModule(newModule, index) {
-        this.noteBook.modules.splice(index, 0, {
-          module: newModule,
-          editing: true,
-          content: {}
-        });
+        this.noteBook.modules.splice(index, 0, {});
+        this.$set(this.noteBook.modules[index], 'module', newModule);
+        this.$set(this.noteBook.modules[index], 'editing', true);
+        this.$set(this.noteBook.modules[index], 'content', {});
       },
       goBack() {
         this.$emit("goBackEvent", this.noteBook);
