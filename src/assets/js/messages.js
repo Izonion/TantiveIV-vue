@@ -4,6 +4,9 @@ class messageHandler {
     GET_COOKIE: 'GET_COOKIE',
     GET_SESSION: "GET_SESSION",
     SET_SESSION: "SET_SESSION",
+    GET_NOTEBOOKS: "GET_NOTEBOOKS",
+    SET_NOTEBOOK: "SET_NOTEBOOK",
+    LOG_IN_SUCCESSFULL: "LOG_IN_SUCCESSFULL",
     REGISTER: "REGISTER",
     LOGIN: "LOGIN",
   }
@@ -39,7 +42,8 @@ class messageHandler {
 
   routes = {
     [this.types.SET_COOKIE]: (message) => {this.setCookie(message.payload)},
-    [this.types.SEND_SID]: (message) => {return null}
+    [this.types.SEND_SID]: (message) => {return null},
+    [this.types.LOG_IN_SUCCESSFULL]: (message) => {this.loginSuccess(message.payload)},
   }
 
   route = (message) => {
@@ -70,6 +74,16 @@ class messageHandler {
     this.cookie.set(data.name, data.value, options)
   }
 
+  loginSuccess(payload) {
+    if (!payload.user) {
+      return
+    }
+    let user = payload.user
+    console.log("user available")
+    //set user someplace
+    this.user = user
+  }
+
   onOpen () {
     console.log(this.cookie)
     let sessionID = this.cookie.get("sessionID")
@@ -78,8 +92,9 @@ class messageHandler {
     } else {
       this.ws.send(JSON.stringify(this.makeMessage(this.types.SET_SESSION, {sessionID})))
     }
-    this.ws.send(JSON.stringify(this.makeMessage(this.types.REGISTER, {username: "testUser", password: "testpass", email:"test@test.com"})))
+    //this.ws.send(JSON.stringify(this.makeMessage(this.types.REGISTER, {username: "testUser", password: "testpass", email:"test@test.com"})))
     this.ws.send(JSON.stringify(this.makeMessage(this.types.LOGIN, {username: "testUser", password:"testpass"})))
+    this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_NOTEBOOKS, null)))
   }
 }
 
