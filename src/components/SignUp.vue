@@ -6,17 +6,14 @@
       <div style="font-size:3em; color:#02577a">
         <i class="fas fa-book"></i>
       </div>
-      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Un</button>
       <p class="mt-3">Don't have an account? <button class="btn btn-sm btn-secondary">Sign Up</button></p>
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
@@ -27,7 +24,7 @@
 
 <script>
   export default {
-    name: "SignIn",
+    name: "SignUp",
     data() {
       return {
 
