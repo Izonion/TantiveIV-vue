@@ -1,31 +1,40 @@
 <template>
   <div class="notebook container mb-4">
-    <div v-for="module in modules">
-      <div class="row row-offset justify-content-center">
-        <AddModule class="col-md-10"
-                   @addModule="addModule($event, modules.indexOf(module))" />
-      </div>
-      <div class="row row-offset justify-content-center">
-        <div class="col-md-10">
-          <div class="card-group row">
-            <div class="card">
-              <component :is="module.module"
-                         :content="module.content"
-                         :editing="module.editing"
-                         @contentUpdated="updateContent(module, $event)"></component>
-           </div>
-            <div class="card btn-toolbar col-1">
-              <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
-              <span v-if="module.editing !== undefined">
-                <button class="btn btn-lg btn-success card-text" style="width:100%;"
-                        @click="module.editing = false"
-                        v-if="module.editing">Save</button>
-                <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
-                        @click="module.editing = true"
-                        v-else>Edit</button>
-              </span>
+    <div v-if="modules.length !== 0">
+      <div v-for="module in modules">
+        <div class="row row-offset justify-content-center">
+          <AddModule class="col-md-10"
+                     @addModule="addModule($event, modules.indexOf(module))" />
+        </div>
+        <div class="row row-offset justify-content-center">
+          <div class="col-md-10">
+            <div class="card-group">
+              <div class="card">
+                <component :is="module.module"
+                           :content="module.content"
+                           :editing="module.editing"
+                           @contentUpdated="updateContent(module, $event)"></component>
+             </div>
+              <div class="card btn-toolbar col-1" style="padding:0">
+                <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
+                <span v-if="module.editing !== undefined">
+                  <button class="btn btn-lg btn-success card-text" style="width:100%;"
+                          @click="module.editing = false"
+                          v-if="module.editing">Save</button>
+                  <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
+                          @click="module.editing = true"
+                          v-else>Edit</button>
+                </span>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      <div class="row row-offset justify-content-center">
+        <div class="col-md-10">
+          <PlaceholderModule class="card" />
         </div>
       </div>
     </div>
@@ -43,6 +52,7 @@
   import QuizletModule from './modules/QuizletModule.vue'
   import AddModule from './modules/AddModule.vue'
   import LinkModule from './modules/LinkModule.vue'
+  import PlaceholderModule from './modules/PlaceholderModule.vue'
 
   export default {
     name: "NoteBook",
@@ -84,7 +94,8 @@
       }
     },
     components: {
-      AddModule
+      AddModule,
+      PlaceholderModule
     },
     methods: {
       removeModule(module) {
