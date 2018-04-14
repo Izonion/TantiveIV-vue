@@ -3,9 +3,10 @@
     <div v-if="editing">
       <h5>Quizlet Embed Url:</h5>
       <textarea class="editbox ext-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
+      <i><i class="fas fa-question-circle mr-1"></i> This box requires a quizlet link, which you can get from copy/pasting the url.</i>
     </div>
     <div v-else>
-      <iframe :src="content.quizUrl" height="500" width="100%" style="border:0"></iframe>
+      <iframe :src="content.embedQuiz" height="500" width="100%" style="border:0"></iframe>
     </div>
   </div>
 </template>
@@ -28,6 +29,13 @@
       }
     },
     methods: {
+      save() {
+        this.editedContent.embedQuiz = this.embedQuiz;
+        this.contentUpdated(this.editedContent);
+      },
+      edit() {
+        this.editedContent = this.content;
+      },
       contentUpdated(newContent) {
         this.$emit('contentUpdated', newContent);
       }
@@ -38,6 +46,16 @@
           this.editedContent = this.content;
         } else {
           this.contentUpdated(this.editedContent);
+        }
+      }
+    },
+    computed: {
+      embedQuiz() {
+        var quizUrl = this.editedContent.quizUrl;
+        if (quizUrl.indexOf("quizlet.com/") > -1){
+          return "https://quizlet.com/" + userUrl.substring(userUrl.indexOf("m/") + 2, userUrl.indexOf("m/") + 11) + "/learn/embed";
+        } else {
+          return quizUrl;
         }
       }
     }
