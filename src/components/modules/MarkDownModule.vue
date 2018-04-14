@@ -1,18 +1,18 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <h5>Text:</h5>
       <textarea class="editbox text-content" id="textModule" v-model.sync="editedContent.text"></textarea>
     </div>
     <div v-else>
-      <p class="text-content" v-text="content.text"></p>
+      <vue-markdown>{{content.text}}</vue-markdown>
     </div>
   </div>
 </template>
 
 <script>
+  import VueMarkdown from 'vue-markdown'
   export default {
-    name: "TextModule",
+    name: "MarkDownModule",
     props: {
       content: {
         type: Object,
@@ -21,6 +21,9 @@
       editing: {
         type: Boolean
       }
+    },
+    components: {
+      VueMarkdown,
     },
     data() {
       return {
@@ -48,7 +51,23 @@
   p {
     white-space: pre-wrap;
   }
-  pre {
+  .module {
     text-align: left;
+  }
+</style>
+
+<style>
+  pre, code {
+    background-color: #e3e9ef;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border: 1px solid #d7dee5;
+    border-radius: 2px;
+  }
+  code {
+    border: none;
   }
 </style>
