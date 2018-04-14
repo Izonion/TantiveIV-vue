@@ -88,6 +88,7 @@
           this.saveToServer(this.noteBookFromID(this.selectedNoteBook));
         }
         this.selectedNoteBook = 0;
+        console.log(this.messageHandler.user);
       },
       switchToNoteBook(noteBookID) {
         console.log("STNB");

@@ -8,6 +8,7 @@ class messageHandler {
     GET_NOTEBOOK: 'GET_NOTEBOOK',
     SET_NOTEBOOK: "SET_NOTEBOOK",
     LOG_IN_SUCCESSFULL: "LOG_IN_SUCCESSFULL",
+    SIGN_OUT_SUCCESSFULL: "SIGN_OUT_SUCCESSFULL",
     REGISTER: "REGISTER",
     LOGIN: "LOGIN",
     NOTEBOOK_CREATION_SUCCESS: "NOTEBOOK_CREATION_SUCCESS",
@@ -48,6 +49,7 @@ class messageHandler {
     [this.types.SET_COOKIE]: (message) => {this.setCookie(message.payload)},
     [this.types.SEND_SID]: (message) => {return null},
     [this.types.LOG_IN_SUCCESSFULL]: (message) => {this.loginSuccess(message.payload)},
+    [this.types.SIGN_OUT_SUCCESSFULL]: (message) => {this.logoutSuccess(message.payload)},
     [this.types.NOTEBOOK_CREATION_SUCCESS]: (message) => {this.notebookCreationSuccess(message.payload)},
     [this.types.SET_NOTEBOOKS]: (message) => {this.setNotebooks(message.payload)},
     [this.types.SET_NOTEBOOK]: (message) => {this.setNotebook(message.payload)},
@@ -89,6 +91,10 @@ class messageHandler {
     console.log("user available")
     //set user someplace
     this.user = user
+  }
+
+  logoutSuccess(payload) {
+    this.user = null;
   }
 
   onOpen () {

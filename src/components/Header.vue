@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
       </ul>
-        
+
         <div class="account-nav" style="padding-left: 20px">
 
           <button class="btn btn-info"
