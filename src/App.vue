@@ -14,7 +14,8 @@
                     :noteBookMetadatas="noteBooks.map(function(noteBook) {return noteBook.metadata})"
                     @noteBookChoose="switchToNoteBook($event)" />
       <NoteBook v-else-if="bodyView == 'NoteBook'"
-                :inNoteBook="noteBookFromID(selectedNoteBook)" />
+                :inNoteBook="noteBookFromID(selectedNoteBook)"
+                @goBackEvent="switchToHome" />
     </div>
     <footer>
       <div class="py-3 text-center">

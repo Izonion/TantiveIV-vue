@@ -1,5 +1,14 @@
 <template>
   <div class="notebook container mb-4">
+    <div class="row mt-3">
+      <div class="col-md-1">
+          <button class="btn btn-info" style="border-radius:50px" @click="goBack"><i class="fas fa-chevron-circle-left"></i> Back</button>
+      </div>
+      <div class="col-md-10">
+        <h1>TITLE</h1>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
     <div v-if="modules.length !== 0">
       <div v-for="module in modules">
         <div class="row row-offset justify-content-center">
@@ -90,6 +99,9 @@
           editing: true,
           content: {}
         });
+      },
+      goBack(){
+        this.$emit("goBackEvent");
       }
     }
   }
