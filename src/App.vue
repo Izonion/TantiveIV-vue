@@ -7,11 +7,13 @@
   </div>
 </template>
 
+<script src="/node_modules/vue-cookie/build/vue-cookie.js'"></script>
+
 <script>
 import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
-import messageHandler from './assets/js/messages'
+import messageHandlerClass from './assets/js/messages'
 
 export default {
   name: 'app',
@@ -38,7 +40,15 @@ export default {
   created() {
     try {
       var webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {webSocket.onmessage = messageHandler;console.log("websocket has opened!!");};
+      webSocket.onopen = (event) => {
+        let messageHandler = new messageHandlerClass()
+        console.log(1)
+        messageHandler.setup(webSocket,this.$cookie);
+        console.log(2)
+        webSocket.onmessage = messageHandler.handleMessage;
+        console.log(3)
+        messageHandler.onOpen();
+        console.log("websocket has opened!!");};
     } catch (err) {
       console.log("Could not connect to server.");
       console.log(err);
