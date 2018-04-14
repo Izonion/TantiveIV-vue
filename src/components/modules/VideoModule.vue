@@ -3,6 +3,7 @@
     <div v-if="editing" style="text-align: left">
       <h5>Video Url:</h5>
       <textarea class="editbox text-content" v-model.sync="editedContent.userUrl"></textarea>
+      <i><i class="fas fa-question-circle mr-1"></i>This box requires a youtube link, which you can get by copy/pasting the url or by clicking youtube's share button.</i>
     </div>
     <div class="aspect-ratio" v-else>
       <iframe width="100%" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -52,12 +53,14 @@
     computed: {
       embedUrl() {
         var userUrl = this.editedContent.userUrl;
-        if (userUrl.indexOf("youtube.com") == -1) {
-          return;
-        } else if (userUrl.indexOf("watch?v=") > -1){
-          var output = "https://youtube.com/embed/" + userUrl.substring(userUrl.indexOf("v=") + 2, userUrl.indexOf("v=") + 13);
+        if (userUrl.indexOf("watch?v=") > -1){
+          return "https://youtube.com/embed/" + userUrl.substring(userUrl.indexOf("v=") + 2, userUrl.indexOf("v=") + 13);
+        } else if (userUrl.indexOf("youtu.be/" > -1)){
+          var output = "https://youtube.com/embed/" + userUrl.substring(userUrl.indexOf(".be/") + 4, userUrl.indexOf("e/") + 13);
           console.log(output);
           return output;
+        } else if (userUrl.indexOf("youtube.com") == -1) {
+          return;
         } else {
           return userUrl;
         }
