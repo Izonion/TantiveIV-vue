@@ -15,8 +15,8 @@
                         :metadata="noteBook"
                         :editing="editing"
                         @noteBookChoose="$emit('noteBookChoose', $event)" />
-      <div class="card m-5">
-        <button v-if="editing" class="btn btn-success" @click="$emit('createNoteBook')">
+      <div v-if="editing" class="card m-5">
+        <button class="btn btn-success" @click="$emit('createNoteBook')">
           <h1 class="card-body">
             <i class="fas fa-plus-circle"></i>
           </h1>
