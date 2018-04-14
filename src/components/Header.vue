@@ -11,9 +11,6 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
       </ul>
-      <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </form>
       <div class="btn-group" v-if="messageHandler.user">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{messageHandler.user.username}}
