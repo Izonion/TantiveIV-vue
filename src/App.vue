@@ -17,7 +17,8 @@
       <NoteBookList v-else-if="bodyView == 'NoteBookList'"
                     :noteBookMetadatas="noteBooks.map(function(noteBook) {return noteBook.metadata})"
                     @noteBookChoose="switchToNoteBook($event)"
-                    @createNoteBook="createNoteBook" />
+                    @createNoteBook="createNoteBook"
+                    @deleteNoteBook="removeByID" />
       <NoteBook v-else-if="bodyView == 'NoteBook'"
                 :inNoteBook="noteBookFromID(selectedNoteBook)"
                 @goBackEvent="switchToHome()"
@@ -102,6 +103,7 @@
         }
       },
       removeByID(id) {
+        console.log(id);
         for (var i = 0; i < this.noteBooks.length; i++) {
           if (this.noteBooks[i]._id == id) {
             return this.noteBooks.splice(i, 1);

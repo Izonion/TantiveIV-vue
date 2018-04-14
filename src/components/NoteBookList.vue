@@ -15,7 +15,8 @@
                         :key="noteBook.key"
                         :metadata="noteBook"
                         :editing="editing"
-                        @noteBookChoose="$emit('noteBookChoose', $event)" />
+                        @noteBookChoose="$emit('noteBookChoose', $event)"
+                        @deleteNoteBook="deleteNoteBook($event)" />
       <div v-if="editing" class="card m-5">
         <button class="btn btn-success" @click="$emit('createNoteBook')">
           <h1 class="card-body">
@@ -42,13 +43,8 @@
       }
     },
     methods: {
-      removeListItem(listItem) {
-        //for (var i = 0; i < this.noteBook.modules.length; i++) {
-          //if (this.noteBook.modules[i] === module) {
-            //this.noteBook.modules.splice(i, 1);
-            //return;
-          //}
-        //}
+      deleteNoteBook(id) {
+        this.$emit('deleteNoteBook', id);
       }
     }
   }
