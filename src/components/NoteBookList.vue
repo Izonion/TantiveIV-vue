@@ -1,6 +1,13 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
+      <div class="col-1"></div>
+      <div class="col-10 mt-5">
+        <h1 style="color: white;">My Notebook Collection</h1>
+      </div>
+      <div class="col-1"></div>
+    </div>
+    <div class="row justify-content-center">
       <NoteBookListItem v-for="noteBook in noteBookMetadatas"
                         :metadata="noteBook"
                         @noteBookChoose="$emit('noteBookChoose', $event)" />

@@ -71,7 +71,11 @@
     name: "NoteBook",
     props: ['inNoteBook'],
     created() {
-      this.noteBook = this.inNoteBook;
+      this.$set(this, 'noteBook', this.inNoteBook);
+      console.log(this.noteBook);
+    },
+    updated() {
+      this.$emit('update', this.noteBook);
     },
     data() {
       return {
@@ -102,8 +106,8 @@
           content: {}
         });
       },
-      goBack(){
-        this.$emit("goBackEvent");
+      goBack() {
+        this.$emit("goBackEvent", this.noteBook);
       }
     }
   }

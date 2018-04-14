@@ -19,7 +19,8 @@
                     @createNoteBook="createNoteBook" />
       <NoteBook v-else-if="bodyView == 'NoteBook'"
                 :inNoteBook="noteBookFromID(selectedNoteBook)"
-                @goBackEvent="switchToHome" />
+                @goBackEvent="switchToHome()"
+                @update="updateNoteBook($event)" />
     </div>
     <footer>
       <div class="py-3 text-center">
@@ -77,6 +78,7 @@
       switchToHome() {
         this.bodyView = 'NoteBookList';
         if (this.selectedNoteBook != 0) {
+          console.log(this.noteBookFromID(this.selectedNoteBook));
           this.saveToServer(this.noteBookFromID(this.selectedNoteBook));
         }
         this.selectedNoteBook = 0;
@@ -102,6 +104,7 @@
         }
       },
       saveToServer(noteBook) {
+        console.log(noteBook);
         this.webSocket.send(JSON.stringify({type:"SET_NOTEBOOK", payload:{notebook: noteBook}}));
       },
       createNoteBook() {
@@ -114,12 +117,25 @@
         }
         console.log(notebook);
         notebook.metadata.uuid = notebook._id;
+        console.log(notebook.metadata);
         this.noteBooks.push(notebook);
         console.log("Notebook Loaded!")
       },
       loadNoteBooks(notebooks) {
         console.log("NOPE");
-        this.noteBooks = notebooks;
+        console.log(notebooks);
+        this.$set(this, 'noteBooks', notebooks);
+      },
+      updateNoteBook(noteBook) {
+        console.log("LOPE");
+        for (var i = 0; i < this.noteBooks.length; i++) {
+          if (this.noteBooks[i]._id === noteBook._id) {
+            console.log("JOPE");
+            console.log(noteBook);
+            this.$set(this.noteBooks, i, noteBook);
+            return;
+          }
+        }
       }
     },
     created() {
