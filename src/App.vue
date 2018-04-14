@@ -73,6 +73,7 @@
     methods: {
       logOut(){
         this.webSocket.send(JSON.stringify({type:"LOGOUT"}));
+        this.switchToSignIn();
       },
       switchToSignIn() {
         this.bodyView = 'SignIn';
@@ -80,7 +81,7 @@
       switchToSignUp() {
         this.bodyView = 'SignUp';
       },
-      switchToHome() {
+      switchToHomeUnconditional() {
         this.bodyView = 'NoteBookList';
         if (this.selectedNoteBook != 0) {
           console.log("HI");
@@ -89,6 +90,13 @@
         }
         this.selectedNoteBook = 0;
         console.log(this.messageHandler.user);
+      },
+      switchToHome() {
+        if (!this.messageHandler.loggedIn) {
+          this.bodyView = 'SignIn';
+        } else {
+          this.switchToHomeUnconditional();
+        }
       },
       switchToNoteBook(noteBookID) {
         console.log("STNB");

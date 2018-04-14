@@ -62,10 +62,14 @@
   }
 
   .navbar-brand{
-    color: #DFF3E4;
+    color: white;
   }
 
   .navbar-brand:hover {
+    color: gray;
+  }
+
+  .navbar-brand:visited {
     color: white;
   }
 
