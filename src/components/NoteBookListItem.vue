@@ -22,6 +22,9 @@
 </script>
 
 <style scoped>
+  .card {
+    background-color: rgba(0, 0, 0, 0);
+  }
   button {
     background-color: #47ad92;
     color: #2c3e50;
