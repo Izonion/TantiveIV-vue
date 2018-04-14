@@ -46,7 +46,8 @@
     <div v-else>
       <div class="row row-offset justify-content-center">
         <div class="col-md-10">
-          <PlaceholderModule class="card" />
+          <PlaceholderModule class="card" 
+              :editing ="editing" />
         </div>
       </div>
     </div>
@@ -79,6 +80,7 @@
     },
     data() {
       return {
+<<<<<<< HEAD
         noteBook: {modules: []},
         editing: true,
         moduleTypes: {
@@ -89,6 +91,10 @@
           "LinkModule": LinkModule,
           "MarkDownModule": MarkDownModule
         }
+=======
+        noteBook: {},
+        editing: false
+>>>>>>> b7c68c1db7cfaa1219c1ba8c985a67e3b13f48fa
       }
     },
     components: {
