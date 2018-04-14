@@ -1,7 +1,7 @@
 <template>
   <div class="card m-5">
     <div>
-      <button class="btn btn-info" @click="$emit('noteBookChoose', metadata.uuid)">
+      <button class="btn btn-info notebook" @click="$emit('noteBookChoose', metadata.uuid)">
         <div class="card-body">
           <h1 class="card-title">
             <i class="fas fa-file-alt"></i><i class="fas fa-pencil-alt ml-2"></i>
@@ -28,15 +28,15 @@
   .card {
     background-color: rgba(0, 0, 0, 0);
   }
-  button {
+  .notebook {
     background-color: #47ad92;
     color: #2c3e50;
   }
-  button:hover {
+  .notebook:hover {
     background-color: #2493a2;
     color: #2c3e50;
   }
-  button:active {
+  .notebook:active {
     background-color: #2c3259;
     color: #2c3e50;
   }
