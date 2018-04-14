@@ -1,7 +1,7 @@
 <template>
-  <div class="module">
+  <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" v-model.sync="editedContent.userUrl"></textarea>
+      <textarea class="editbox text-content" v-model.sync="editedContent.userUrl"></textarea>
     </div>
     <div class="aspect-ratio" v-else>
       <iframe width="100%" :src="content.embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -53,6 +53,10 @@
         var userUrl = this.editedContent.userUrl;
         if (userUrl.indexOf("youtube.com") == -1) {
           return;
+        } else if (userUrl.indexOf("watch?v=") > -1){
+          var output = "https://youtube.com/embed/" + userUrl.substring(userUrl.indexOf("v=") + 2, userUrl.indexOf("v=") + 13);
+          console.log(output);
+          return output;
         } else {
           return userUrl;
         }

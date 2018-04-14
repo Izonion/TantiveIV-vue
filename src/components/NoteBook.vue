@@ -2,20 +2,25 @@
   <div class="notebook container">
     <div class="row row-offset justify-content-center" v-for="module in modules">
       <div class="col-md-10">
-        <div class="card">
-          <component :is="module.module"
-                     :content="module.content"
-                     :editing="module.editing"
-                     @contentUpdated="updateContent(module, $event)"></component>
-          <div class="card-footer btn-toolbar justify-content-between">
-            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
+        <div class="card-group row">
+          <div class="card">
+            <component :is="module.module"
+                       :content="module.content"
+                       :editing="module.editing"
+                       @contentUpdated="updateContent(module, $event)"></component>
+         </div>
+          <div class="card btn-toolbar col-1">
+            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
             <span v-if="module.editing !== undefined">
-              <button class="btn btn-lg btn-success card-text"
+              <button class="btn btn-lg btn-success card-text" style="width:100%;"
                       @click="module.editing = false"
                       v-if="module.editing">Save</button>
-              <button class="btn btn-lg btn-secondary card-text"
+              <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
                       @click="module.editing = true"
                       v-else>Edit</button>
+              <button class="btn btn-lg btn-secondary card-text"
+                      @click="moveModule(module, 0)"
+                      >Move to 0</button>
             </span>
           </div>
         </div>
@@ -33,6 +38,7 @@
   import ImageModule from './modules/ImageModule.vue'
   import QuizletModule from './modules/QuizletModule.vue'
   import AddModule from './modules/AddModule.vue'
+  import LinkModule from './modules/LinkModule.vue'
 
   export default {
     name: "NoteBook",
@@ -63,6 +69,11 @@
             module: QuizletModule,
             editing: false,
             content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
+          },
+          {
+            module: LinkModule,
+            editing: false,
+            content: {url: "https://www.google.com"}
           }
         ],
         editing: true
@@ -89,6 +100,19 @@
           editing: false,
           content: {}
         });
+      },
+      moveModule(module, index){
+        while (index < 0) {
+            index += this.modules.length;
+        }
+        if (index >= this.modules.length) {
+            var k = index - arr.length;
+            while ((k--) + 1) {
+                this.modules.push(undefined);
+            }
+        }
+         this.modules.splice(index, 0, this.modules.splice(this.modules.indexOf(module), 1)[0]);
+       return modules;
       }
     }
   }
@@ -98,4 +122,11 @@
 .row-offset {
   margin-top: 20px;
 }
+</style>
+
+<style>
+  .editbox {
+    width: 100%;
+    resize: vertical;
+  }
 </style>

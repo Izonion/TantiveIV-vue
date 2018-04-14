@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <Header @goHome="switchToHome"
-            @signInEvent="switchToSignIn"/>
+            @signInEvent="switchToSignIn"
+            @signUpEvent="switchToSignUp"/>
     <component :is="bodyView"
+               :webSocket="webSocket"
                @click="switchToSignIn"></component>
   </div>
 </template>
@@ -13,14 +15,20 @@
 import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
+<<<<<<< HEAD
 import messageHandlerClass from './assets/js/messages'
+=======
+import messageHandler from './assets/js/messages'
+import SignUp from './components/SignUp.vue'
+>>>>>>> 1635f0a5b1fb7a744cd7004081131e016869326e
 
 export default {
   name: 'app',
   components: {
     Header,
     NoteBook,
-    SignIn
+    SignIn,
+    SignUp
   },
   data() {
     return {
@@ -33,6 +41,9 @@ export default {
       this.bodyView = SignIn;
       //this.webSocket.send(JSON.stringify({type:"LOGIN", payload:{username:"test", password:"test"}}));
     },
+    switchToSignUp() {
+      this.bodyView = SignUp;
+    },
     switchToHome() {
       this.bodyView = NoteBook;
     }
@@ -42,11 +53,8 @@ export default {
       var webSocket = new WebSocket("ws://study.test:8001/ws");
       webSocket.onopen = (event) => {
         let messageHandler = new messageHandlerClass()
-        console.log(1)
         messageHandler.setup(webSocket,this.$cookie);
-        console.log(2)
         webSocket.onmessage = messageHandler.handleMessage;
-        console.log(3)
         messageHandler.onOpen();
         console.log("websocket has opened!!");};
     } catch (err) {

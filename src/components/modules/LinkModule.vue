@@ -1,17 +1,17 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <textarea class="editbox ext-content" id="textModule" v-model.sync="editedContent.quizUrl"></textarea>
+      <textarea class="text-content" id="linkModule" v-model.sync="editedContent.url"></textarea>
     </div>
     <div v-else>
-      <iframe :src="content.quizUrl" height="500" width="100%" style="border:0"></iframe>
+      <a :href="content.url" target="_blank" class="btn btn-info">Link</a>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "QuizletModule",
+    name: "LinkModule",
     props: {
       content: {
         type: Object,
@@ -49,5 +49,33 @@
   }
   .module {
     text-align: left;
+  }
+
+  #link {
+    /*background-color: black;*/
+  }
+
+  /*a {
+    color: white;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }*/
+
+  a {
+    width:100%;
+    height:40px;
+    color:#fff;
+    text-align:
+    center;
+    display: block;
+    -webkit-border-radius:3px; 
+    -moz-border-radius:3px; 
+    border-radius:3px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #cccccc;
   }
 </style>

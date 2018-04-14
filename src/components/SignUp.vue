@@ -6,19 +6,15 @@
       <div style="font-size:3em; color:#02577a">
         <i class="fas fa-book"></i>
       </div>
-      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus v-model.sync="email">
       <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required v-model.sync="username">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-      <p class="mt-3">Don't have an account?</p>
-      <button class="btn btn-sm btn-secondary" @click="$emit('signUpEvent')" type="button">Sign Up</button>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model.sync="password">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" @click="submit">Sign Up</button>
+
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
   </div>
@@ -28,8 +24,20 @@
 
 <script>
   export default {
-    name: "SignIn",
-    props: ['webSocket']
+    name: "SignUp",
+    props: ['webSocket'],
+    methods: {
+      submit() {
+        this.webSocket.send(JSON.stringify({type:"REGISTER", payload:{username:this.username, password:this.password, email:this.email}}));
+      }
+    },
+    data() {
+      return {
+        email: "",
+        username: "",
+        password: ""
+      }
+    }
   }
 </script>
 
