@@ -1,7 +1,7 @@
 <template>
   <div class="card m-5">
     <div>
-      <button v-if="!editing" class="btn btn-dark notebook" @click="$emit('noteBookChoose', metadata.uuid)">
+      <button v-if="!editing" class="btn btn-info notebook" @click="$emit('noteBookChoose', metadata.uuid)">
         <div class="card-body">
           <h1 class="card-title">
             <i class="fas fa-file-alt"></i><i class="fas fa-pencil-alt ml-2"></i>
