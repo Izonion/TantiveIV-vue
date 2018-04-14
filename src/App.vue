@@ -116,27 +116,19 @@
         if (matched) {
           this.removeByID(notebook._id);
         }
-        console.log(notebook);
         this.$set(notebook.metadata, 'uuid', notebook._id);
-        console.log(notebook.metadata);
         this.noteBooks.push(notebook);
-        console.log("Notebook Loaded!")
       },
       loadNoteBooks(notebooks) {
-        console.log("NOPE");
         this.$set(this, 'noteBooks', notebooks);
         for (var i = 0; i < this.noteBooks.length; i++) {
           this.$set(this.noteBooks[i].metadata, 'uuid', this.noteBooks[i]._id);
         }
-        console.log(this.noteBooks);
       },
       updateNoteBook(noteBook) {
-        console.log("LOPE");
         for (var i = 0; i < this.noteBooks.length; i++) {
           if (this.noteBooks[i]._id === noteBook._id) {
-            console.log("JOPE");
-            console.log(noteBook);
-            this.noteBooks[i] = noteBook;
+            this.noteBooks.splice(i, 1, noteBook);
             return;
           }
         }

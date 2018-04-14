@@ -17,11 +17,7 @@
 <script>
   export default {
     name: 'NoteBookListItem',
-    props: ['metadata'],
-    created() {
-      console.log("CONNNN");
-      console.log(this.metadata);
-    }
+    props: ['metadata']
   }
 </script>
 
