@@ -2,18 +2,20 @@
   <div class="notebook container">
     <div class="row row-offset justify-content-center" v-for="module in modules">
       <div class="col-md-10">
-        <div class="card">
-          <component :is="module.module"
-                     :content="module.content"
-                     :editing="module.editing"
-                     @contentUpdated="updateContent(module, $event)"></component>
-          <div class="card-footer btn-toolbar justify-content-between">
+        <div class="card-group row">
+          <div class="card">
+            <component :is="module.module"
+                       :content="module.content"
+                       :editing="module.editing"
+                       @contentUpdated="updateContent(module, $event)"></component>
+         </div>
+          <div class="card btn-toolbar col-1">
             <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
             <span v-if="module.editing !== undefined">
-              <button class="btn btn-lg btn-success card-text"
+              <button class="btn btn-lg btn-success card-text" style="width:100%;"
                       @click="module.editing = false"
                       v-if="module.editing">Save</button>
-              <button class="btn btn-lg btn-secondary card-text"
+              <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
                       @click="module.editing = true"
                       v-else>Edit</button>
             </span>
