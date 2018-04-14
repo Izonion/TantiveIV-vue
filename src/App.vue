@@ -15,12 +15,8 @@
 import Header from './components/Header.vue'
 import NoteBook from './components/NoteBook.vue'
 import SignIn from './components/SignIn.vue'
-<<<<<<< HEAD
 import messageHandlerClass from './assets/js/messages'
-=======
-import messageHandler from './assets/js/messages'
 import SignUp from './components/SignUp.vue'
->>>>>>> 1635f0a5b1fb7a744cd7004081131e016869326e
 
 export default {
   name: 'app',
