@@ -12,20 +12,21 @@
       <ul class="navbar-nav mr-auto">
       </ul>
 
-        <div class="account-nav" style="padding-left: 20px">
-
-          <button class="btn btn-info"
+      <div v-if="loggedIn" class="account-nav" style="padding-left: 20px">
+        <button class="btn btn-secondary ml-2"
+                @click="logOut"> Sign Out
+        </button>
+      </div>
+      <div v-else class="account-nav" style="padding-left: 20px">
+        <button class="btn btn-info"
                   @click="signIn">
-            Sign In
-          </button>
-          <button class="btn btn-info ml-2"
-                  @click="signUp">
-            Sign Up
-          </button>
-          <button class="btn btn-secondary ml-2"
-                  @click="logOut"> Sign Out
-          </button>
-        </div>
+          Sign In
+        </button>
+        <button class="btn btn-info ml-2"
+                @click="signUp">
+          Sign Up
+        </button>
+      </div>
     </div>
   </nav>
 </template>
@@ -45,7 +46,12 @@
         this.$emit("logOutEvent");
       }
     },
-    props: ['messageHandler']
+    props: ['messageHandler'],
+    computed: {
+      loggedIn() {
+        return this.messageHandler.user != null;
+      }
+    }
   }
 </script>
 
