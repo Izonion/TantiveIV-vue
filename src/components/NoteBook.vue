@@ -112,7 +112,7 @@
       addModule(newModule, index) {
         this.modules.splice(index, 0, {
           module: newModule,
-          editing: false,
+          editing: true,
           content: {}
         });
       }
