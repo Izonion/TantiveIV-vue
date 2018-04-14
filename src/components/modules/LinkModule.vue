@@ -1,10 +1,11 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
-      <textarea class="text-content" id="linkModule" v-model.sync="editedContent.url"></textarea>
+      <h5>Link Label:</h5> <textarea class="text-content" id="linkUrl" v-model.sync="editedContent.url" placeholder="Google" style="width:100%"></textarea>
+      <h5>Link Url:</h5><textarea class="text-content" id="linkLabel" v-model.sync="editedContent.label" placeholder="https://www.google.com" style="width:100%"></textarea> 
     </div>
     <div v-else>
-      <a :href="content.url" target="_blank" class="btn btn-info">Link</a>
+      <a :href="content.url" target="_blank" class="btn btn-info">{{content.label}}</a>
     </div>
   </div>
 </template>
