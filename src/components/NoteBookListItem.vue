@@ -26,7 +26,7 @@
         </div>
       </button>
     </div>
-    <button v-if="editing" class="btn btn-danger">Delete</button>
+    <button v-if="editing" class="btn btn-danger" @click="$emit('deleteNoteBook', metadata.uuid)">Delete</button>
   </div>
 </template>
 
