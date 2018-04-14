@@ -7,11 +7,11 @@
                 @click="$emit('addModule', moduleType)">{{key}}</button>
       </div>
       <div class="btn-group" role="group">
-        <button class="btn btn-danger" @click="expanded = false">-</button>
+        <button class="btn btn-danger" @click="expanded = false"><i class="fas fa-minus-circle"></i></button>
       </div>
     </div>
     <div class="mb-3" v-else>
-      <button class="btn btn-success" @click="expanded = true">+</button>
+      <button class="btn btn-success" @click="expanded = true"><i class="fas fa-plus-circle"></i></button>
     </div>
   </div>
 </template>

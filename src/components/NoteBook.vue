@@ -8,7 +8,7 @@
                      :editing="module.editing"
                      @contentUpdated="updateContent(module, $event)"></component>
           <div class="card-footer btn-toolbar justify-content-between">
-            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)">-</button>
+            <button class="btn btn-lg btn-danger card-text" @click="removeModule(module)"><i class="fas fa-trash-alt"></i></button>
             <span v-if="module.editing !== undefined">
               <button class="btn btn-lg btn-success card-text"
                       @click="module.editing = false"
@@ -33,6 +33,7 @@
   import ImageModule from './modules/ImageModule.vue'
   import QuizletModule from './modules/QuizletModule.vue'
   import AddModule from './modules/AddModule.vue'
+  import LinkModule from './modules/LinkModule.vue'
 
   export default {
     name: "NoteBook",
@@ -63,6 +64,11 @@
             module: QuizletModule,
             editing: false,
             content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
+          },
+          {
+            module: LinkModule,
+            editing: false,
+            content: {url: "https://www.google.com"}
           }
         ],
         editing: true
