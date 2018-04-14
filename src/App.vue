@@ -8,7 +8,7 @@
       <SignIn v-if="bodyView == 'SignIn'"
               :webSocket="webSocket"
               @click="switchToSignIn" />
-      <SignOut v-else-if="bodyView == 'SignOut'"
+      <SignUp v-else-if="bodyView == 'SignUp'"
                :webSocket="webSocket" />
       <NoteBookList v-else-if="bodyView == 'NoteBookList'"
                     :noteBookMetadatas="noteBooks.map(function(noteBook) {return noteBook.metadata})"
@@ -171,7 +171,7 @@
         }
       },
       saveToServer(noteBook) {
-        this.webSocket.send(JSON.stringify({type:"SET_NOTEBOOK", payload:noteBook}));
+        this.webSocket.send(JSON.stringify({type:"SET_NOTEBOOK", payload:{notebook: noteBook}}));
       },
       createNoteBook() {
         this.webSocket.send(JSON.stringify({type:"CREATE_NOTEBOOK"}));
@@ -184,8 +184,8 @@
           this.messageHandler.setup(this.webSocket,this.$cookie);
           this.webSocket.onmessage = this.messageHandler.handleMessage;
           this.messageHandler.onOpen();
+          this.webSocket.send(JSON.stringify({type:"GET_NOTEBOOKS"}));
           console.log("websocket has opened!!");};
-        this.webSocket.send(JSON.stringify({type:"GET_NOTEBOOKS"}));
       } catch (err) {
         console.log("Could not connect to server.");
         console.log(err);
