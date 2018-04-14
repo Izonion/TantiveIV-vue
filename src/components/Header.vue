@@ -57,11 +57,11 @@
 
 <style scoped>
   .navbar-light{
-    background-color: #DCB13C;
+    background-color: #2E1760;
   }
 
   .navbar-brand{
-    color: #02577a;
+    color: #DFF3E4;
   }
 
   .navbar-brand:hover {

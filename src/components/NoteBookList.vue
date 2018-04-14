@@ -3,10 +3,10 @@
     <div class="row justify-content-center">
       <div class="col-1"></div>
       <div class="col-10 mt-5">
-        <h1 style="color: white;">My Notebook Collection</h1>
+        <h1 style="color: #DFF3E4;">My Notebook Collection</h1>
       </div>
       <div class="col-md-1 mt-5" style="height: 3em">
-        <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit List</button>
+        <button v-if="!editing" class="btn btn-dark" style="" @click="editing = true">Edit List</button>
         <button v-else class="btn btn-success" @click="editing = false">Save List</button>
       </div>
     </div>
