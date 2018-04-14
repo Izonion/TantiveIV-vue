@@ -49,7 +49,7 @@
     props: ['messageHandler'],
     computed: {
       loggedIn() {
-        return this.messageHandler.user != null;
+        return this.messageHandler.loggedIn;
       }
     }
   }

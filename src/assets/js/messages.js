@@ -18,6 +18,8 @@ class messageHandler {
   ws = null
   cookie = null
 
+  loggedIn = false
+
   setup (webSocket, cookieModule, vue) {
     this.ws = webSocket
     this.cookie = cookieModule
@@ -91,10 +93,14 @@ class messageHandler {
     console.log("user available")
     //set user someplace
     this.user = user
+
+    this.loggedIn = true
   }
 
   logoutSuccess(payload) {
     this.user = null;
+
+    this.loggedIn = false
   }
 
   onOpen () {
