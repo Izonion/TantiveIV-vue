@@ -11,17 +11,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
       </ul>
-      <div class="btn-group" v-if="messageHandler.user">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{messageHandler.user.username}}
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <button class="dropdown-item" type="button">Action</button>
-          <button class="dropdown-item" type="button">Another action</button>
-          <button class="dropdown-item" type="button">Something else here</button>
-        </div>
-      </div>
-      <div class="account-nav" style="padding-left: 20px" v-else>
+      <div class="account-nav" style="padding-left: 20px">
         <button class="btn btn-info"
                 @click="signIn">
           Sign In
@@ -30,6 +20,17 @@
                 @click="signUp">
           Sign Up
         </button>
+      </div>
+      <div class="btn-group">
+        <div class="btn btn-secondary dropdown-toggle dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 10px">
+          {{messageHandler.user.username}}
+          <div class="dropdown-content">
+            <button class="btn btn-secondary"
+                @click="logOut"> Sign Out
+            </button>
+          </div>
+        </div>
+        
       </div>
     </div>
   </nav>
@@ -45,6 +46,9 @@
       },
       signUp() {
         this.$emit("signUpEvent");
+      },
+      logOut() {
+        this.$emit("logOutEvent");
       }
     },
     props: ['messageHandler']
@@ -63,4 +67,24 @@
   .navbar-brand:hover {
     color: white;
   }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    color:white;
+    left:0;
+    text-align: left;
+    display: none;
+    position: absolute;
+    background-color: #636363;
+    padding: 5px 8px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 </style>

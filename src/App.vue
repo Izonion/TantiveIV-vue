@@ -3,7 +3,8 @@
     <Header :messageHandler="messageHandler"
             @goHome="switchToHome"
             @signInEvent="switchToSignIn"
-            @signUpEvent="switchToSignUp"/>
+            @signUpEvent="switchToSignUp"
+            @logOutEvent="logOut" />
     <div class="body-comp">
       <SignIn v-if="bodyView == 'SignIn'"
               :webSocket="webSocket"
@@ -69,6 +70,9 @@
       }
     },
     methods: {
+      logOut(){
+        this.webSocket.send(JSON.stringify({type:"LOGOUT"}));
+      },
       switchToSignIn() {
         this.bodyView = 'SignIn';
       },
