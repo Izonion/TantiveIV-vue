@@ -21,6 +21,7 @@
   import VideoModule from './VideoModule.vue'
   import ImageModule from './ImageModule.vue'
   import QuizletModule from './QuizletModule.vue'
+  import LinkModule from './LinkModule.vue'
 
   export default {
     name: "AddModule",
@@ -31,7 +32,8 @@
           "Text": TextModule,
           "Video": VideoModule,
           "Image": ImageModule,
-          "Quizlet": QuizletModule
+          "Quizlet": QuizletModule,
+          "Link": LinkModule
         }
       }
     },

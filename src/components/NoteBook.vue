@@ -23,7 +23,7 @@
                           v-if="module.editing">Save</button>
                   <button class="btn btn-lg btn-secondary card-text" style="width:100%;"
                           @click="module.editing = true"
-                          v-else>Edit</button>
+                          v-else><i class="fas fa-edit"></i></button>
                 </span>
               </div>
             </div>
