@@ -2,6 +2,10 @@
   <div class="notebook container mb-4">
     <div v-for="module in modules">
       <div class="row row-offset justify-content-center">
+        <AddModule class="col-md-10"
+                   @addModule="addModule($event, modules.indexOf(module))" />
+      </div>
+      <div class="row row-offset justify-content-center">
         <div class="col-md-10">
           <div class="card-group row">
             <div class="card">
@@ -27,10 +31,10 @@
           </div>
         </div>
       </div>
-      <div class="row row-offset justify-content-center">
-        <AddModule class="col-md-10"
-                   @addModule="addModule($event, modules.indexOf(module) + 1)" />
-      </div>
+    </div>
+    <div class="row row-offset justify-content-center">
+      <AddModule class="col-md-10"
+                 @addModule="addModule($event, modules.length)" />
     </div>
   </div>
 </template>
