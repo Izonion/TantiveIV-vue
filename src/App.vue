@@ -15,7 +15,8 @@
                     @noteBookChoose="switchToNoteBook($event)"
                     @createNoteBook="createNoteBook" />
       <NoteBook v-else-if="bodyView == 'NoteBook'"
-                :inNoteBook="noteBookFromID(selectedNoteBook)" />
+                :inNoteBook="noteBookFromID(selectedNoteBook)"
+                @goBackEvent="switchToHome" />
     </div>
     <footer>
       <div class="py-3 text-center">

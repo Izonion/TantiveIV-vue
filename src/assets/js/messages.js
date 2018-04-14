@@ -5,10 +5,13 @@ class messageHandler {
     GET_SESSION: "GET_SESSION",
     SET_SESSION: "SET_SESSION",
     GET_NOTEBOOKS: "GET_NOTEBOOKS",
+    GET_NOTEBOOK: 'GET_NOTEBOOK',
     SET_NOTEBOOK: "SET_NOTEBOOK",
     LOG_IN_SUCCESSFULL: "LOG_IN_SUCCESSFULL",
     REGISTER: "REGISTER",
     LOGIN: "LOGIN",
+    NOTEBOOK_CREATION_SUCCESS: "NOTEBOOK_CREATION_SUCCESS",
+    SET_NOTEBOOKS: "SET_NOTEBOOKS",
   }
 
   ws = null
@@ -44,6 +47,9 @@ class messageHandler {
     [this.types.SET_COOKIE]: (message) => {this.setCookie(message.payload)},
     [this.types.SEND_SID]: (message) => {return null},
     [this.types.LOG_IN_SUCCESSFULL]: (message) => {this.loginSuccess(message.payload)},
+    [this.types.NOTEBOOK_CREATION_SUCCESS]: (message) => {this.notebookCreationSuccess(message.payload)},
+    [this.types.SET_NOTEBOOKS]: (message) => {this.setNotebooks(message.payload)},
+    [this.types.SET_NOTEBOOK]: (message) => {this.setNotebook(message.payload)},
   }
 
   route = (message) => {
@@ -95,6 +101,30 @@ class messageHandler {
     //this.ws.send(JSON.stringify(this.makeMessage(this.types.REGISTER, {username: "testUser", password: "testpass", email:"test@test.com"})))
     // this.ws.send(JSON.stringify(this.makeMessage(this.types.LOGIN, {username: "testUser", password:"testpass"})))
     // this.ws.send(JSON.stringify(this.makeMessage(this.types.GET_NOTEBOOKS, null)))
+  }
+
+  notebookCreationSuccess (payload) {
+    if (!payload) {
+      return
+    }
+    if (!payload.notebook) {
+      return
+    }
+    console.log(`notebook available`)
+  }
+
+  setNotebooks (payload) {
+    if (!payload || !payload.notebooks) {
+      return
+    }
+    console.log('notebooks available')
+  }
+
+  setNotebook (payload) {
+    if (!payload || !payload.notebook) {
+      return
+    }
+    console.log(`notebook available`)
   }
 }
 
