@@ -1,6 +1,7 @@
 <template>
   <div class="module card-body">
     <div v-if="editing">
+      <h5>Markdown:</h5>
       <textarea class="editbox text-content" id="textModule" v-model="editedContent.text"></textarea>
     </div>
     <div v-else>
