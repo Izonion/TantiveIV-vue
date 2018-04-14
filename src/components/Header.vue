@@ -11,17 +11,9 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
       </ul>
-        <div class="btn-group" v-if="messageHandler.user">
-          <div class="btn btn-secondary dropdown-toggle dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 10px">
-            {{messageHandler.user.username}}
-            <div class="dropdown-content">
-              <button class="btn btn-secondary"
-                  @click="logOut"> Sign Out
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="account-nav" style="padding-left: 20px" v-else>
+        
+        <div class="account-nav" style="padding-left: 20px">
+
           <button class="btn btn-info"
                   @click="signIn">
             Sign In
@@ -29,6 +21,9 @@
           <button class="btn btn-info ml-2"
                   @click="signUp">
             Sign Up
+          </button>
+          <button class="btn btn-secondary ml-2"
+                  @click="logOut"> Sign Out
           </button>
         </div>
     </div>
