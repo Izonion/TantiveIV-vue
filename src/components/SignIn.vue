@@ -16,7 +16,7 @@
           <input type="checkbox" value="remember-me" v-model="rememberMe"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" @click="submit">Sign In</button>
       <p class="mt-3">Don't have an account?</p>
       <button class="btn btn-sm btn-secondary" @click="$emit('signUpEvent')" type="button">Sign Up</button>
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>

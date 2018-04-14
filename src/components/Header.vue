@@ -14,7 +14,7 @@
       <form class="form-inline my-2 my-md-0">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
       </form>
-      <div class="account-nav" style="padding-left: 20px">
+      <div class="account-nav" style="padding-left: 20px" v-if="user == null">
         <button class="btn btn-primary"
                 @click="signIn">
           Sign In
@@ -39,7 +39,8 @@
       signUp() {
         this.$emit("signUpEvent");
       }
-    }
+    },
+    props: ['user']
   }
 </script>
 

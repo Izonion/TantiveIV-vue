@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header @goHome="switchToHome"
+    <Header :user="user"
+            @goHome="switchToHome"
             @signInEvent="switchToSignIn"
             @signUpEvent="switchToSignUp"/>
     <component :is="bodyView"
@@ -29,7 +30,13 @@ export default {
   data() {
     return {
       bodyView: NoteBook,
-      webSocket: null
+      webSocket: null,
+      messageHandler: new messageHandlerClass()
+    }
+  },
+  computed: {
+    user() {
+      return this.messageHandler.user;
     }
   },
   methods: {
@@ -45,12 +52,11 @@ export default {
   },
   created() {
     try {
-      var webSocket = new WebSocket("ws://study.test:8001/ws");
-      webSocket.onopen = (event) => {
-        let messageHandler = new messageHandlerClass()
-        messageHandler.setup(webSocket,this.$cookie);
-        webSocket.onmessage = messageHandler.handleMessage;
-        messageHandler.onOpen();
+      this.webSocket = new WebSocket("ws://study.test:8001/ws");
+      this.webSocket.onopen = (event) => {
+        this.messageHandler.setup(this.webSocket,this.$cookie);
+        this.webSocket.onmessage = this.messageHandler.handleMessage;
+        this.messageHandler.onOpen();
         console.log("websocket has opened!!");};
     } catch (err) {
       console.log("Could not connect to server.");
