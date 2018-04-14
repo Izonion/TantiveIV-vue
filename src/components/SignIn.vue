@@ -6,9 +6,9 @@
       <div style="font-size:3em; color:#02577a">
         <i class="fas fa-book"></i>
       </div>
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input type="username" id="imputUsername" class="form-control" placeholder="Username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
@@ -16,7 +16,7 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
       <p class="mt-3">Don't have an account? <button class="btn btn-sm btn-secondary">Sign Up</button></p>
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
