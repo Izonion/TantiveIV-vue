@@ -18,7 +18,7 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
       <p class="mt-3">Don't have an account?</p>
-      <button class="btn btn-sm btn-secondary">Sign Up</button>
+      <button class="btn btn-sm btn-secondary" @click="$emit('signUpEvent')" type="button">Sign Up</button>
       <p class="mt-3 mb-1 text-muted">&copy; 2018</p>
     </form>
   </div>

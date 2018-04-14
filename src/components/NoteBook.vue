@@ -111,7 +111,7 @@
                 this.modules.push(undefined);
             }
         }
-         this.modules.splice(index, 0, this.modules.splice(this.modules.indexOf(module), 1)[0]);  
+         this.modules.splice(index, 0, this.modules.splice(this.modules.indexOf(module), 1)[0]);
        return modules;
       }
     }
