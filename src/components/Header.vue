@@ -4,11 +4,11 @@
     <a class="navbar-brand"
        href="#"
        @click="$emit('goHome')"><i class="fas fa-book"></i> Self Study</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample09">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-md-0">
@@ -25,11 +25,11 @@
         </div>
       </div>
       <div class="account-nav" style="padding-left: 20px" v-else>
-        <button class="btn btn-primary"
+        <button class="btn btn-info"
                 @click="signIn">
           Sign In
         </button>
-        <button class="btn btn-primary"
+        <button class="btn btn-info ml-2"
                 @click="signUp">
           Sign Up
         </button>
