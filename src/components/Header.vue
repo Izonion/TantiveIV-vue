@@ -12,9 +12,10 @@
       <ul class="navbar-nav mr-auto">
       </ul>
 
-      <div v-if="loggedIn" class="account-nav" style="padding-left: 20px">
-        <button class="btn btn-secondary ml-2"
-                @click="logOut"> Sign Out
+      <div v-if="loggedIn" class="account-nav dropdown" style="padding-left: 20px; padding-right: 20px">
+        <div><b>{{messageHandler.user.username}}</b></div>
+        <button class="btn btn-secondary ml-2 dropdown-content"
+                @click="logOut"> Log Out
         </button>
       </div>
       <div v-else class="account-nav" style="padding-left: 20px">
