@@ -48,7 +48,7 @@
   p {
     white-space: pre-wrap;
   }
-  .module {
+  pre {
     text-align: left;
   }
 </style>

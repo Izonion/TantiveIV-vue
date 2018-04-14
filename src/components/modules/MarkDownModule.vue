@@ -55,3 +55,19 @@
     text-align: left;
   }
 </style>
+
+<style>
+  pre, code {
+    background-color: #e3e9ef;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border: 1px solid #d7dee5;
+    border-radius: 2px;
+  }
+  code {
+    border: none;
+  }
+</style>
