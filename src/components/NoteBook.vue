@@ -33,6 +33,7 @@
   import ImageModule from './modules/ImageModule.vue'
   import QuizletModule from './modules/QuizletModule.vue'
   import AddModule from './modules/AddModule.vue'
+  import LinkModule from './modules/LinkModule.vue'
 
   export default {
     name: "NoteBook",
@@ -63,6 +64,11 @@
             module: QuizletModule,
             editing: false,
             content: {quizUrl: "https://quizlet.com/286184917/match/embed"}
+          },
+          {
+            module: LinkModule,
+            editing: false,
+            content: {url: "https://www.google.com"}
           }
         ],
         editing: true
