@@ -6,8 +6,8 @@
         <h1 style="color: white;">My Notebook Collection</h1>
       </div>
       <div class="col-md-1 mt-5" style="height: 3em">
-        <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit Page</button>
-        <button v-else class="btn btn-success" @click="editing = false">Save Page</button>
+        <button v-if="!editing" class="btn btn-secondary" @click="editing = true">Edit List</button>
+        <button v-else class="btn btn-success" @click="editing = false">Save List</button>
       </div>
     </div>
     <div class="row justify-content-center">
